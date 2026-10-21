@@ -1,10 +1,10 @@
 <div align="center">
 
-<a href="https://evolink.ai/launch/seedance-2-5?utm_source=github&utm_medium=banner&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow"><img src="images/logo.png" alt="GPT Image 2 × Seedance 2.5 İş Akışı Rehberi"></a>
+<a href="https://evolink.ai/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=banner"><img src="images/workflow-banner.svg" alt="GPT Image 2 × Seedance 2.5 İş Akışı Rehberi"></a>
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](LICENSE)
 [![awesome-seedance-2.5-prompts](https://img.shields.io/badge/📦_awesome--seedance--2.5--prompts-181717?logo=github)](https://github.com/EvoLinkAI/awesome-seedance-2.5-prompts)
-[![Seedance-2.5-Gateway-Service](https://img.shields.io/badge/📦_Seedance--2.5--Gateway--Service-181717?logo=github)](https://github.com/EvoLinkAI/Seedance-2.5-Gateway-Service)
+[![EvoLink MCP / CLI](https://img.shields.io/badge/EvoLink-MCP%20%2F%20CLI-181717)](https://evolink.ai/mcp?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=top_badge)
 [![awesome-seedance-2.5-guide](https://img.shields.io/badge/📦_awesome--seedance--2.5--guide-181717?logo=github)](https://github.com/EvoLinkAI/awesome-seedance-2.5-guide)
 [![awesome-gpt-image-2-prompts](https://img.shields.io/badge/📦_awesome--gpt--image--2--prompts-181717?logo=github)](https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts)
 
@@ -23,132 +23,139 @@
 
 </div>
 
+# GPT Image 2 × Seedance 2.5
 
+Görüntüyü GPT Image 2 ile onaylayın, ardından Seedance 2.5 ile canlandırın. Ürün reklamları, karakter çekimleri ve storyboard için agent ve API yollarını içeren iş akışı rehberi.
 
+> Belgeler ve şema 2026-10-21 tarihinde kontrol edildi. Yeni eğitim depoya ait öğretici örnektir; gerçek üretim veya ölçülmüş performans iddiası yoktur.
 
+<a id="quick-start"></a>
+## Hızlı başlangıç
 
+**Seedance 2.5 — EvoLink üzerinde kullanılabilir**
 
-## 🎬 Giriş
+[EvoLink MCP / CLI](https://evolink.ai/mcp?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=agent_setup) · [Seedance 2.5](https://evolink.ai/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=model) · [API key](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=api_key) · [Sign up](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=signup)
 
-GPT Image 2 × Seedance 2.5 iş akışı deposuna hoş geldiniz! 🤗
-
-**Bu depoda GPT Image 2 ile Seedance 2.5'ı birleştirerek yüksek kaliteli yapay zeka videoları üretmek için kanıtlanmış iş akışları, prompt şablonları ve gerçek üretici örnekleri topluyoruz.**
-
-GPT Image 2 "ne çizileceğini" ve görsel tutarlılığı yönetir. Seedance 2.0 ise "nasıl hareket edeceğini" yönetir ve bu görüntüleri videoya dönüştürür. Birlikte, bugün mevcut en güçlü yapay zeka video hatlarından birini oluştururlar.
-
-Bu depodaki vakaların çoğu X/Twitter üreticilerinden, topluluk deneylerinden ve gerçek üretim iş akışlarından derlenmiştir.
-
-Deneyin: [GPT Image 2 + Seedance 2.5](https://evolink.ai/launch/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow)
-
-### Hizli kullanim
-
-- [GPT Image 2 Gen Skill](https://github.com/EvoLinkAI/gpt-image-2-gen-skill) agentinize GPT Image 2 ile gorsel uretimi ve duzenleme yetenegi ekler
-- [Seedance 2 Video Gen Skill](https://github.com/EvoLinkAI/seedance2-video-gen-skill-for-openclaw) agentinize Seedance 2 ile video uretimi yetenegi ekler
-
-### Hizli kurulum
-
-#### Dogrudan Terminal'de calistir
+Desteklenen istemciyi MCP kurulum sayfasından bağlayın. Terminal agent için aşağıdaki CLI’ı kurun (Node.js 22+), tarayıcıda giriş yapın ve eşlik eden skill’i yükleyin. Her üretimden önce iki modelin girdilerini, parametrelerini ve maliyetlerini kontrol edin.
 
 ```bash
-npx evolink-gpt-image@latest
-npx evolink-seedance@latest
+npm install -g @evolinkai/cli@latest
+evolink auth login
+evolink skills install
+evolink models schema gpt-image-2 --json
+evolink models schema seedance-2.5-image-to-video --json
 ```
 
-Eger kurulumu Terminal'de kendiniz manuel yapacaksaniz, bu iki satiri dogrudan calistirabilirsiniz. Kurucular bilinen bir skills dizinini otomatik algilamaya calisir; bulamazlarsa nereye kurulacagini sorarlar.
+```text
+Use EvoLink to turn my product photo into a five-second product video.
+Use GPT Image 2 for one 16:9 scene, then Seedance 2.5 for animation.
+Check current inputs, parameters and costs first; ask me before each paid task.
+Show me the image before creating the video. Keep the product still and use
+a gentle camera push-in. No dialogue or music; request silent video.
+Inspect product details instead of promising exact logo or identity preservation.
+Pass the approved image URL as the first frame with aspect_ratio=adaptive.
+Poll the original task ID, then return the video and save a local copy.
+```
 
-#### Claude Code
+<a id="product-workflow"></a>
+## Ürün fotoğrafından videoya
+
+Kullanım izniniz olan ürün fotoğrafını herkese açık URL ile hazırlayın veya yerel dosyayı agent üzerinden yükleyin. GPT Image 2 ile 16:9 ürün sahnesi üretin. Ürünü, logoyu, kompozisyonu ve boyutları kontrol edin. Onaylanan görüntü URL’sini Seedance 2.5’e ilk kare olarak aktarın. Orijinal görevi tamamlanana kadar sorgulayın, videoyu kaydedin ve son yazıları kurgu sırasında ekleyin.
+
+[Tam API eğitimi (İngilizce)](docs/api-workflow.md) · [GPT Image 2 API](https://evolink.ai/docs/en/api-manual/image-series/gpt-image-2/gpt-image-2-image-generation?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=image_docs) · [Seedance 2.5 I2V API](https://evolink.ai/docs/en/api-manual/video-series/seedance2.5/seedance-2.5-image-to-video?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=video_docs)
 
 ```bash
-npx evolink-gpt-image@latest -y --path ~/.claude/skills
-npx evolink-seedance@latest -y --path ~/.claude/skills
+# Set EVOLINK_API_KEY in your environment; use a real approved image URL.
+export APPROVED_IMAGE_URL="https://your-public-host.example/approved-scene.png"
+jq -n --arg image "$APPROVED_IMAGE_URL" '{
+  model: "seedance-2.5-image-to-video",
+  prompt: "Five-second product shot. The product stays still; gentle camera push-in. No dialogue or music.",
+  image_urls: [$image], duration: 5, quality: "720p",
+  aspect_ratio: "adaptive", generate_audio: false
+}' > video-request.json
+curl --fail-with-body --request POST \
+  https://api.evolink.ai/v1/videos/generations \
+  --header "Authorization: Bearer ${EVOLINK_API_KEY}" \
+  --header 'Content-Type: application/json' \
+  --data-binary @video-request.json --output video-created.json
+# Save .id from video-created.json; task creation is not video completion.
 ```
 
-#### OpenCode
+<a id="draft-workflow"></a>
+## İsteğe bağlı: taslaktan son videoya
 
-```bash
-npx evolink-gpt-image@latest -y --path ~/.opencode/skills
-npx evolink-seedance@latest -y --path ~/.opencode/skills
+Üst seviyede `draft: true` ve `quality: "480p"` gönderin. Tamamlanan taslağı kontrol edip kimliğini `source_task_id` olarak `seedance-2.5-draft-to-video` modeline göndererek 1080p üretin. İki istek ayrı ücretlendirilir. Süre genellikle tamamlanmadan sonra 24 saattir; `draft_expires_at` ve kuyruk süresini dikkate alın. Mod kullanılamıyorsa durun veya normal üretimi ve maliyetini açıkça seçin.
+
+```json
+{
+  "model": "seedance-2.5-draft-to-video",
+  "source_task_id": "YOUR_COMPLETED_UNEXPIRED_DRAFT_TASK_ID",
+  "output_format": "mp4"
+}
 ```
 
-#### Cursor
+[Draft → 1080p](docs/api-workflow.md#optional-draft-to-final) · [Pricing](https://evolink.ai/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=pricing)
 
-```bash
-npx evolink-gpt-image@latest -y --path .cursor/skills
-npx evolink-seedance@latest -y --path .cursor/skills
-```
+<a id="community-examples"></a>
+## Geçmiş topluluk örnekleri
 
-#### OpenClaw
+Orijinal model ve platform açıklamaları, prompt’lar, kaynak bağlantıları ve medya korunur. Seedance 2.0 örnekleri 2.5 API testi değildir. Önceki düzenlemelerden kalan tüm model etiketleri kaynak gönderilerle doğrulanmamıştır. Belirtilen yolu uyarlayıp yeni çıktıyı kontrol edin. Yaratıcı prompt talimatları API parametre sözleşmesi değildir.
 
-```bash
-npx evolink-gpt-image@latest -y
-npx evolink-seedance@latest -y
-```
+<a id="menu"></a>
+## 📑 İçindekiler
 
-Yukaridaki Terminal surumu manuel kurulum icindir. Asagidaki host-ozel komutlar ise bir AI Agent'in ek soru sormadan skills kurmasi icin daha uygundur.
-
-Faydalı bulursanız yıldız vermeyi düşünebilirsiniz. ⭐
-
-
-
-## 📰 Haberler
-
-- **26 Mayıs 2026:** [🌟 Topluluk Vitrini](#-topluluk-vitrini) bölümüne 17–23 Mayıs grubundan 30 yeni iş eklendi (slug 104–133)
-- **2 Mayıs 2026:** [🌟 Topluluk Vitrini](#-topluluk-vitrini) eklendi — X'teki yaratıcıların en yeni 70 GPT Image 2 × Seedance 2.5 çalışması (29 Nisan – 2 Mayıs)
-
-## 📑 Menü
-
-- [🎬 Giriş](#-giriş)
-- [📰 Haberler](#-haberler)
-- [📑 Menü](#-menü)
+- [Hızlı başlangıç](#quick-start)
+- [Ürün fotoğrafından videoya](#product-workflow)
+- [İsteğe bağlı: taslaktan son videoya](#draft-workflow)
+- [Geçmiş topluluk örnekleri](#community-examples)
+- [Parametreler ve uygulama kontrolleri](#parameters)
+- [İlgili kaynaklar](#related-resources)
 - [🎥 Storyboard Teknikleri](#-storyboard-teknikleri)
-  - [Vaka 1: Standart Storyboard → Video (by @kiyoshi_shin)](#vaka-1-standart-storyboard--video-by-kiyoshi_shin)
-  - [Vaka 2: 3×3 Izgara Storyboard Yöntemi (by @servasyy_ai)](#vaka-2-33-ızgara-storyboard-yöntemi-by-servasyy_ai)
-  - [Vaka 10: Çok Kareli Referans → Hızlı Kesim Video (by @heygentlewhale)](#vaka-10-çok-kareli-referans--hızlı-kesim-video-by-heygentlewhale)
-  - [Vaka 19: Storyboard Öncelikli Maliyet Kontrolü (by @0xbisc)](#vaka-19-storyboard-öncelikli-maliyet-kontrolü-by-0xbisc)
+  - [Vaka 1: Standart Storyboard → Video (by @kiyoshi_shin)](#case-1)
+  - [Vaka 2: 3×3 Izgara Storyboard Yöntemi (by @servasyy_ai)](#case-2)
+  - [Vaka 10: Çok Kareli Referans → Hızlı Kesim Video (by @heygentlewhale)](#case-10)
+  - [Vaka 19: Storyboard Öncelikli Maliyet Kontrolü (by @0xbisc)](#case-19)
 - [📱 Reklam ve Ürün](#-reklam-ve-ürün)
-  - [Vaka 5: Uygulama MVP Demo Videosu (by @Shin_Engineer)](#vaka-5-uygulama-mvp-demo-videosu-by-shin_engineer)
-  - [Vaka 6: 15 Saniyelik Reklam (by @ai_mitosan)](#vaka-6-15-saniyelik-reklam-by-ai_mitosan)
-  - [Vaka 15: Lüks Reklam — Storyboard'dan Filme (by @insmind_com)](#vaka-15-lüks-reklam--storyboarddan-filme-by-insmind_com)
-  - [Vaka 16: Sinematik Yemek Videosu (by @kingofdairyque)](#vaka-16-sinematik-yemek-videosu-by-kingofdairyque)
-  - [Vaka 26: Ürün Görseli → Kısa Video Reklam (by @insmind_com)](#vaka-26-ürün-görseli--kısa-video-reklam-by-insmind_com)
+  - [Vaka 5: Uygulama MVP Demo Videosu (by @Shin_Engineer)](#case-5)
+  - [Vaka 6: 15 Saniyelik Reklam (by @ai_mitosan)](#case-6)
+  - [Vaka 15: Lüks Reklam — Storyboard'dan Filme (by @insmind_com)](#case-15)
+  - [Vaka 16: Sinematik Yemek Videosu (by @kingofdairyque)](#case-16)
+  - [Vaka 26: Ürün Görseli → Kısa Video Reklam (by @insmind_com)](#case-26)
 - [🎨 Animasyon ve Karakter](#-animasyon-ve-karakter)
-  - [Vaka 3: Karakter Sheet'i → Animasyon (by @YaReYaRu30Life)](#vaka-3-karakter-sheeti--animasyon-by-yareyaru30life)
-  - [Vaka 4: Anime OP Tarzı Video (by @Toshi_nyaruo_AI)](#vaka-4-anime-op-tarzı-video-by-toshi_nyaruo_ai)
-  - [Vaka 12: Claude Code × Karakter Sheet'i → Animasyon (by @old_pgmrs_will)](#vaka-12-claude-code--karakter-sheeti--animasyon-by-old_pgmrs_will)
-  - [Vaka 13: Dans Dizisi Izgarası → Dans Videosu (by @Ciri_ai)](#vaka-13-dans-dizisi-ızgarası--dans-videosu-by-ciri_ai)
-  - [Vaka 14: Çizgi Roman Sayfası → Animasyonlu Video (by @nimentrix)](#vaka-14-çizgi-roman-sayfası--animasyonlu-video-by-nimentrix)
-  - [Vaka 25: K-Pop Koreografi — Detaylı Kontrol (by @Kashberg_0)](#vaka-25-k-pop-koreografi--detaylı-kontrol-by-kashberg_0)
-  - [Vaka 27: Karakter Tanıtım Animasyonu (by @0xbisc)](#vaka-27-karakter-tanıtım-animasyonu-by-0xbisc)
+  - [Vaka 3: Karakter Sheet'i → Animasyon (by @YaReYaRu30Life)](#case-3)
+  - [Vaka 4: Anime OP Tarzı Video (by @Toshi_nyaruo_AI)](#case-4)
+  - [Vaka 12: Claude Code × Karakter Sheet'i → Animasyon (by @old_pgmrs_will)](#case-12)
+  - [Vaka 13: Dans Dizisi Izgarası → Dans Videosu (by @Ciri_ai)](#case-13)
+  - [Vaka 14: Çizgi Roman Sayfası → Animasyonlu Video (by @nimentrix)](#case-14)
+  - [Vaka 25: K-Pop Koreografi — Detaylı Kontrol (by @Kashberg_0)](#case-25)
+  - [Vaka 27: Karakter Tanıtım Animasyonu (by @0xbisc)](#case-27)
 - [🎵 Müzik Videosu ve Kısa Film](#-müzik-videosu-ve-kısa-film)
-  - [Vaka 7: Suno ile Müzik Videosu (by @fukaborichannel)](#vaka-7-suno-ile-müzik-videosu-by-fukaborichannel)
-  - [Vaka 8: Siberpunk Tarzında Kısa Film (by @ponyodong)](#vaka-8-siberpunk-tarzında-kısa-film-by-ponyodong)
-  - [Vaka 11: Japon MV — Tam AI Toolchain (by @Tz_2022)](#vaka-11-japon-mv--tam-ai-toolchain-by-tz_2022)
-  - [Vaka 20: Claude Çekim Listesi → Müzik Videosu (by @CoffeeVectors)](#vaka-20-claude-çekim-listesi--müzik-videosu-by-coffeevectors)
+  - [Vaka 7: Suno ile Müzik Videosu (by @fukaborichannel)](#case-7)
+  - [Vaka 8: Siberpunk Tarzında Kısa Film (by @ponyodong)](#case-8)
+  - [Vaka 11: Japon MV — Tam AI Toolchain (by @Tz_2022)](#case-11)
+  - [Vaka 20: Claude Çekim Listesi → Müzik Videosu (by @CoffeeVectors)](#case-20)
 - [🎮 Oyun Konsepti](#-oyun-konsepti)
-  - [Vaka 9: Oyun ve Etkileşimli İçerik (by @op7418)](#vaka-9-oyun-ve-etkileşimli-i̇çerik-by-op7418)
-  - [Vaka 17: Oyun Arayüzü Animasyonu — Tam Pipeline (by @0xInk_)](#vaka-17-oyun-arayüzü-animasyonu--tam-pipeline-by-0xink_)
-  - [Vaka 24: GTA Tarzı Şehir Oyun Konsepti (by @markgadala)](#vaka-24-gta-tarzı-şehir-oyun-konsepti-by-markgadala)
+  - [Vaka 9: Oyun ve Etkileşimli İçerik (by @op7418)](#case-9)
+  - [Vaka 17: Oyun Arayüzü Animasyonu — Tam Pipeline (by @0xInk_)](#case-17)
+  - [Vaka 24: GTA Tarzı Şehir Oyun Konsepti (by @markgadala)](#case-24)
 - [🛠 Üretim Araçları](#-üretim-araçları)
-  - [Vaka 18: Tek Agent Otomatik İş Akışı (by @venturetwins)](#vaka-18-tek-agent-otomatik-i̇ş-akışı-by-venturetwins)
-  - [Vaka 21: Oyuncu Seçimi Izgarası — Oyuncu Audition (by @8fstudioz)](#vaka-21-oyuncu-seçimi-ızgarası--oyuncu-audition-by-8fstudioz)
-  - [Vaka 22: 3D Heykel → AI Render → Animasyon (by @_DAntunes_)](#vaka-22-3d-heykel--ai-render--animasyon-by-_dantunes_)
+  - [Vaka 18: Tek Agent Otomatik İş Akışı (by @venturetwins)](#case-18)
+  - [Vaka 21: Oyuncu Seçimi Izgarası — Oyuncu Audition (by @8fstudioz)](#case-21)
+  - [Vaka 22: 3D Heykel → AI Render → Animasyon (by @_DAntunes_)](#case-22)
 - [🌟 Topluluk Vitrini](#-topluluk-vitrini)
-- [💡 İpuçları ve Teknikler](#-i̇puçları-ve-teknikler)
-  - [Tutarlılık Rehberi](#tutarlılık-rehberi)
-  - [Prompt Şablonları](#prompt-şablonları)
-- [🚀 Evolink Üzerinde Deneyin](#-evolink-üzerinde-deneyin)
-- [🙏 Teşekkür](#-teşekkür)
-
 
 ## 🎥 Storyboard Teknikleri
 
 <!-- Case 1: Standard Storyboard → Video (by @kiyoshi_shin) -->
+<a id="case-1"></a>
 ### Vaka 1: [Standart Storyboard → Video](https://x.com/kiyoshi_shin/status/2047133524403400847) (by [@kiyoshi_shin](https://x.com/kiyoshi_shin))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 En yaygın iş akışı. GPT Image 2 ile bir storyboard paneli üretin, ardından bunu Seedance 2.0 ile canlandırın. Tanıtım videoları, kısa dramalar ve animasyon açılış videoları için uygundur.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/storyboard_case1/input.jpg" width="280" alt="GPT Image 2 ile üretilmiş storyboard"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/storyboard_case1/input.jpg" width="280" alt="GPT Image 2 ile üretilmiş storyboard"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/ac25fc3d-b6cb-4149-a8ba-e7e10c5b1faa" width="280" controls></video></td>
 </tr></table>
 
@@ -173,16 +180,19 @@ Cinematic brand advertisement, slow camera push-in, product centered in frame, w
 ```
 
 > [!NOTE]
-> Seedance'in otomatik kırpmasını önlemek için storyboard görüntülerini 16:9 olarak çıktı alın. Sinema standardı için kare hızını 24fps yapın. Her storyboard panelini basit tutun — içerik ne kadar basitse hareket çıktısı o kadar doğru olur.
+> 2.5 istekleri 4–30 saniye üretir; kısa çekimleri kurguda kesin. Oranı görüntüde hazırlayın: I2V yalnızca adaptive kabul eder. Prompt’ta 24fps bir API ayarı değildir.
 
 
 <!-- Case 2: 3×3 Grid Storyboard Method (by @servasyy_ai) -->
+<a id="case-2"></a>
 ### Vaka 2: [3×3 Izgara Storyboard Yöntemi](https://x.com/servasyy_ai/status/2047198012750143999) (by [@servasyy_ai](https://x.com/servasyy_ai))
 
-Topluluğun keşfettiği önemli bir teknik: tüm storyboard panellerini Seedance'e tek tek aktarmak yerine önce tek bir 3×3 ızgara görüntüsünde birleştirmek, hata oranını belirgin biçimde düşürür.
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
+
+Izgara yöntemi bir topluluk deneyidir ve sıra niyetini aktarabilir; daha az hata veya daha doğru hareket gösteren kontrollü test burada yoktur.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/storyboard_case2/output.jpg" width="400" alt="3×3 ızgara storyboard çıktısı"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/storyboard_case2/output.jpg" width="400" alt="3×3 ızgara storyboard çıktısı"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/00f32388-a17b-4b9c-8da3-1956436ce91b" width="400" controls></video></td>
 </tr></table>
 
@@ -208,16 +218,19 @@ turn this image into video
 ```
 
 > [!NOTE]
-> **Kullanmadan önce köşeli parantez içindeki içeriği değiştirin.** Bu yöntem işe yarar çünkü Seedance hareket niyetini tek bir görüntüden analiz eder. Izgara yön referansı sağlar ve ayrı görüntülere göre daha tutarlı hareket üretir.
+> Izgara yöntemi bir topluluk deneyidir ve sıra niyetini aktarabilir; daha az hata veya daha doğru hareket gösteren kontrollü test burada yoktur.
 
 
 <!-- Case 10: Multi-Frame Reference Storyboard (by @heygentlewhale + @ai_gezgini) -->
+<a id="case-10"></a>
 ### Vaka 10: [Çok Kareli Referans → Hızlı Kesim Video](https://x.com/heygentlewhale/status/2047969137969004946) (by [@heygentlewhale](https://x.com/heygentlewhale))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Seedance 2.0'a birden fazla referans karesi içeren bir storyboard görüntüsü verin ve sırayı takip etmesini söyleyin. Model, kare konumlarını sahne sinyalleri olarak okur ve klipleri manuel olarak birleştirmeye gerek kalmadan tutarlı bir hızlı kesim düzenlemesi üretir.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/storyboard_case10/input.jpg" width="280" alt="GPT Image 2 çok kareli storyboard"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/storyboard_case10/input.jpg" width="280" alt="GPT Image 2 çok kareli storyboard"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/4d7af334-4e49-4de4-899e-803f72116c21" width="280" controls></video></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/5def7e00-6fc6-4a4e-8075-5f37cb24b84c" width="280" controls></video></td>
 </tr></table>
@@ -258,16 +271,19 @@ and preserve cinematic lighting and pacing.
 ```
 
 > [!NOTE]
-> Bu prompt her türde işler — stil açıklamasını bilim kurgu, korku, belgesel veya başka bir türle değiştirin. Anahtar ifade `follow the storyboard sequence of the [N] reference frames`'dir — bu ifade Seedance'e kare konumlarını tek bir kompozisyon yerine bir zaman çizelgesi olarak ele alması gerektiğini söyler.
+> Izgara yöntemi bir topluluk deneyidir ve sıra niyetini aktarabilir; daha az hata veya daha doğru hareket gösteren kontrollü test burada yoktur.
 
 
 <!-- Case 19: Storyboard-First Cost Control (by @0xbisc) -->
+<a id="case-19"></a>
 ### Vaka 19: [Storyboard Öncelikli Maliyet Kontrolü](https://x.com/0xbisc/status/2049100073481716076) (by [@0xbisc](https://x.com/0xbisc))
 
-Üretim odaklı bir yaklaşım: önce storyboard'u GPT Image 2'de iterasyon yapın (ucuz), sonra kompozisyon kesinleştiğinde video üretin (pahalı). Bu, önemli miktarda kredi tasarrufu sağlar çünkü video iterasyonları görüntü iterasyonlarından 10–50 kat daha fazla harcar. 298 beğeni / 13B görünüm / 291 yer imi.
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
+
+Videoya harcama yapmadan storyboard’u kontrol edin. Tasarruf ayarlara ve revizyonlara bağlıdır; sabit 10–50× maliyet oranı veya her iş için en ucuz yöntem kanıtlanmamıştır.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/storyboard_case19/output.jpg" width="400" alt="Storyboard öncelikli iş akışı çıktısı"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/storyboard_case19/output.jpg" width="400" alt="Storyboard öncelikli iş akışı çıktısı"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/09e04d80-c0d1-4a8c-9b74-2efe474acfcd" width="400" controls></video></td>
 </tr></table>
 
@@ -340,24 +356,27 @@ Generate video based strictly on storyboard @ image1. Follow the storyboard exac
 ```
 
 > [!NOTE]
-> **Storyboard önceliği neden maliyet açısından kazandırır:** Video iterasyonları kredileri hızla tüketir. Storyboard ile her çekimi tek tek ayarlayabilir ve sorunları erkenden yakalayabilirsiniz. Video adımı, pahalı bir deneme-yanılma döngüsü yerine tek bir son render haline gelir. Topluluk geri bildirimleri bunun uzun sekanslar için en bütçe dostu iş akışı olduğunu doğruluyor.
+> Videoya harcama yapmadan storyboard’u kontrol edin. Tasarruf ayarlara ve revizyonlara bağlıdır; sabit 10–50× maliyet oranı veya her iş için en ucuz yöntem kanıtlanmamıştır.
 
 
 ## 📱 Reklam ve Ürün
 
 <!-- Case 5: App MVP Demo Video (by @Shin_Engineer) -->
+<a id="case-5"></a>
 ### Vaka 5: [Uygulama MVP Demo Videosu](https://x.com/Shin_Engineer/status/2047182050323812381) (by [@Shin_Engineer](https://x.com/Shin_Engineer))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 ile henüz var olmayan bir uygulamanın bitmiş gibi görünen arayüz ekran görüntülerini üretin, ardından bunları Seedance 2.0 ile ürün demosuna dönüştürün. Geliştirmeye başlamadan önce pazar ilgisini test etmek için TikTok veya sosyal medyada paylaşın.
 
 | Çıktı |
 | :----: |
-| <a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/app_case5/output0.jpg" width="400" alt="GPT Image 2 ile üretilmiş uygulama arayüzü ekran görüntüsü 1"></a> |
+| <a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/app_case5/output0.jpg" width="400" alt="GPT Image 2 ile üretilmiş uygulama arayüzü ekran görüntüsü 1"></a> |
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/app_case5/output1.jpg" width="220" alt="Uygulama arayüzü ekran görüntüsü 2"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/app_case5/output2.jpg" width="220" alt="Uygulama arayüzü ekran görüntüsü 3"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/app_case5/output3.jpg" width="220" alt="Uygulama arayüzü ekran görüntüsü 4"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/app_case5/output1.jpg" width="220" alt="Uygulama arayüzü ekran görüntüsü 2"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/app_case5/output2.jpg" width="220" alt="Uygulama arayüzü ekran görüntüsü 3"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/app_case5/output3.jpg" width="220" alt="Uygulama arayüzü ekran görüntüsü 4"></a></td>
 </tr></table>
 
 **Adımlar:**
@@ -385,17 +404,22 @@ Smooth app UI transition animation, screen tap interaction, natural interface mo
 ```
 
 > [!NOTE]
-> **Kullanmadan önce köşeli parantezlerdeki yer tutucuları değiştirin.** Video açıklamasında bunu AI ile üretildi diye etiketlemeyin — ürün demosu gibi yayınlayın ve yorumlardaki gerçek kitle tepkisini gözlemleyin.
+> Sonucu yapay zekâyla üretilmiş konsept demosu olarak belirtin; hayal edilen ekran ve etkileşimleri çalışan özelliklerden ayırın.
 
 
 <!-- Case 6: 15-Second Commercial (by @ai_mitosan) -->
+<a id="case-6"></a>
 ### Vaka 6: [15 Saniyelik Reklam](https://x.com/ai_mitosan/status/2047146600422846762) (by [@ai_mitosan](https://x.com/ai_mitosan))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
+
+> 2.5 istekleri 4–30 saniye üretir; kısa çekimleri kurguda kesin. Oranı görüntüde hazırlayın: I2V yalnızca adaptive kabul eder. Prompt’ta 24fps bir API ayarı değildir.
 
 İki aşamalı iş akışı: GPT Image 2 ana görseli ve eşleşen storyboard'u üretir, ardından Seedance 2.0 her klibi canlandırır. Başlıklar ve müzikle birleştirerek tam bir 15 saniyelik reklam hazırlayın.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/commercial_case6/input1.jpg" width="280" alt="GPT Image 2 ana ürün görseli"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/commercial_case6/input2.jpg" width="280" alt="GPT Image 2 storyboard"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/commercial_case6/input1.jpg" width="280" alt="GPT Image 2 ana ürün görseli"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/commercial_case6/input2.jpg" width="280" alt="GPT Image 2 storyboard"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/09ae3c57-b8fb-4323-ba76-7777541fe4a3" width="280" controls></video></td>
 </tr></table>
 
@@ -427,12 +451,15 @@ Smooth app UI transition animation, screen tap interaction, natural interface mo
 
 
 <!-- Case 15: Luxury Commercial — Storyboard to Film (by @insmind_com) -->
+<a id="case-15"></a>
 ### Vaka 15: [Lüks Reklam — Storyboard'dan Filme](https://x.com/insmind_com/status/2049481439285223785) (by [@insmind_com](https://x.com/insmind_com))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 ile lüks bir parfüm reklamı için 3×4 storyboard ızgarası (12 kare) üretin, ardından Seedance 2.0 ile sinematik marka düzeyinde bir filme dönüştürün. Yapılandırılmış akış — giriş → ritüel → dönüşüm → çözüm → marka kapanışı — tek bir üretimde tam bir anlatı yayı oluşturur. 371 beğeni / 84B görünüm / 255 yer imi.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/luxury_case15/output.jpg" width="400" alt="Lüks reklam storyboard'u"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/luxury_case15/output.jpg" width="400" alt="Lüks reklam storyboard'u"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/281fef1e-f42d-442c-b06e-44d7cff221ec" width="400" controls></video></td>
 </tr></table>
 
@@ -456,16 +483,19 @@ Animate the provided 3x4 storyboard into a smooth cinematic video. Preserve exac
 ```
 
 > [!NOTE]
-> Editoryal pitch-deck düzeni (her karede görsel yönetim notlarıyla) Seedance'e düz bir ızgaradan daha güçlü anlatı ipuçları verir. Bu iş akışı herhangi bir lüks ürün kategorisine ölçeklenebilir — cilt bakımı, saat, moda — paleti ve ürün referanslarını değiştirerek.
+> Izgara yöntemi bir topluluk deneyidir ve sıra niyetini aktarabilir; daha az hata veya daha doğru hareket gösteren kontrollü test burada yoktur.
 
 
 <!-- Case 16: Cinematic Food Video (by @kingofdairyque) -->
+<a id="case-16"></a>
 ### Vaka 16: [Sinematik Yemek Videosu](https://x.com/kingofdairyque/status/2049812014596599834) (by [@kingofdairyque](https://x.com/kingofdairyque))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 + Seedance 2.5 kullanarak zaman damgalı çekim açıklamalarıyla ultra gerçekçi yemek hazırlama videoları oluşturun. Her zaman damgası segmenti (0–2s, 2–4s, vb.) belirli bir kamera açısı ve eylem tanımlar ve Seedance'e 15 saniyelik dizi üzerinde hassas kontrol sağlar. 55 beğeni / 1B görünüm.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/food_case16/input.jpg" width="400" alt="Yemek videosu storyboard girişi"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/food_case16/input.jpg" width="400" alt="Yemek videosu storyboard girişi"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/30a20e57-8384-4117-adf7-4f92faebeb33" width="400" controls></video></td>
 </tr></table>
 
@@ -492,16 +522,19 @@ soft dramatic lighting, shallow depth of field, natural textures, no text, no su
 ```
 
 > [!NOTE]
-> Zaman damgalı prompt tekniği Seedance'e hassas bir çekim çekim zaman çizelgesi verir. Bu, herhangi bir ürün veya süreç videosu için işe yarar — kutu açma, el işi, kokteyl yapımı. En iyi sonuçlar için her segmenti 2 saniyede tutun ve hem kamera açısını hem de eylemi açıklayın.
+> Izgara yöntemi bir topluluk deneyidir ve sıra niyetini aktarabilir; daha az hata veya daha doğru hareket gösteren kontrollü test burada yoktur.
 
 
 <!-- Case 26: Product Image → Short Video Ad (by @insmind_com) -->
+<a id="case-26"></a>
 ### Vaka 26: [Ürün Görseli → Kısa Video Reklam](https://x.com/insmind_com/status/2049843814337306974) (by [@insmind_com](https://x.com/insmind_com))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Statik ürün görsellerini sosyal medyada kaydırmayı durduran videolara dönüştürün. Mevcut ürün fotoğraflarınızı GPT Image 2'ye referans olarak yükleyin, bir sahne kompozisyonu oluşturun, ardından Seedance 2.0 ile canlandırın. E-ticaret ve sosyal medya pazarlaması için tasarlanmıştır — zaten sahip olduğunuz ürün fotoğraflarından TikTok/Reels'e hazır içerik üretin.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/product_case26/output.jpg" width="400" alt="Ürün video reklam çıktısı"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/product_case26/output.jpg" width="400" alt="Ürün video reklam çıktısı"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/880c0019-e45a-4eb9-be6f-638ff71a0e0f" width="400" controls></video></td>
 </tr></table>
 
@@ -519,18 +552,21 @@ Statik ürün görsellerini sosyal medyada kaydırmayı durduran videolara dön�
 ## 🎨 Animasyon ve Karakter
 
 <!-- Case 3: Character Sheet → Animation (by @YaReYaRu30Life) -->
+<a id="case-3"></a>
 ### Vaka 3: [Karakter Sheet'i → Animasyon](https://x.com/YaReYaRu30Life/status/2047203375314571501) (by [@YaReYaRu30Life](https://x.com/YaReYaRu30Life))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 ile bir karakter üç görünüm sheet'i (ön, yan, arka) üretin, ardından bunu Seedance 2.0'da animasyon için sabit referans olarak kullanın. Anime karakterleri, oyun karakterleri ve figür tanıtımları için idealdir.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case3/input0.jpg" width="260" alt="Karakter sheet'i ön"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case3/input1.jpg" width="260" alt="Karakter sheet'i yan"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case3/input2.jpg" width="260" alt="Ekipman sheet'i"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case3/input0.jpg" width="260" alt="Karakter sheet'i ön"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case3/input1.jpg" width="260" alt="Karakter sheet'i yan"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case3/input2.jpg" width="260" alt="Ekipman sheet'i"></a></td>
 </tr></table>
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case3/output.jpg" width="400" alt="Ekipmanla birleştirilmiş karakter sheet'i"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case3/output.jpg" width="400" alt="Ekipmanla birleştirilmiş karakter sheet'i"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/92a0aa56-441f-40db-b9c9-13410254cb3f" width="400" controls></video></td>
 </tr></table>
 
@@ -554,12 +590,15 @@ Turn the storyboard into video using Seedance2.0
 
 
 <!-- Case 4: Anime OP Style Video (by @Toshi_nyaruo_AI) -->
+<a id="case-4"></a>
 ### Vaka 4: [Anime OP Tarzı Video](https://x.com/Toshi_nyaruo_AI/status/2047216971184546231) (by [@Toshi_nyaruo_AI](https://x.com/Toshi_nyaruo_AI))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 ile bir sahne kurulum görseli oluşturun, ardından Seedance 2.0'ın serbestçe canlandırmasına izin verin. Kısıtlı (storyboard yönlendirmeli) ve serbest biçimli (yalnızca prompt) çıktıları karşılaştırmak, her çekim için doğru yaklaşımı belirlemeye yardımcı olur.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case4/output0.jpg" width="280" alt="Anime OP çıktısı 1"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case4/output0.jpg" width="280" alt="Anime OP çıktısı 1"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/f08a2fee-89a7-4c7c-a58a-f1306f87419a" width="280" controls></video></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/09d81a41-b5c5-47f3-8c67-442b7a93b019" width="280" controls></video></td>
 </tr></table>
@@ -587,12 +626,15 @@ Japanese full-color anime, fast cuts, high frame count, 24fps. Dark fantasy anim
 
 
 <!-- Case 12: Claude Code + Character Sheet → Animation (by @old_pgmrs_will) -->
+<a id="case-12"></a>
 ### Vaka 12: [Claude Code × Karakter Sheet'i → Animasyon](https://x.com/old_pgmrs_will/status/2045091769180914019) (by [@old_pgmrs_will](https://x.com/old_pgmrs_will))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Claude Code ile dünya inşası ve karakter hikayesini yazın, ardından yapılandırılmış açıklamaları GPT Image 2'ye vererek karakter anahtar görselini üretin, sonra Seedance 2.0 ile canlandırın. Orijinal IP oluşturma için geliştirici dostu iş akışı. 191 beğeni / 7B görünüm.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/seedance2?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case12/output.jpg" width="400" alt="Claude Code + GPT Image 2 karakter anahtar görseli"></a></td>
+<td align="center"><a href="https://evolink.ai/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case12/output.jpg" width="400" alt="Claude Code + GPT Image 2 karakter anahtar görseli"></a></td>
 </tr></table>
 
 **Adımlar:**
@@ -606,12 +648,15 @@ Claude Code ile dünya inşası ve karakter hikayesini yazın, ardından yapıla
 
 
 <!-- Case 13: Dance Sequence Grid → Dance Video (by @Ciri_ai) -->
+<a id="case-13"></a>
 ### Vaka 13: [Dans Dizisi Izgarası → Dans Videosu](https://x.com/Ciri_ai/status/2049034340160704643) (by [@Ciri_ai](https://x.com/Ciri_ai))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 ile 4×4 dans pozları ızgarası üretin, ardından bunu Seedance 2.0'a hareket referansı olarak verin. Model ızgarayı bir koreografi dizisi olarak okur ve sürekli bir dans videosu üretir. Gelişmiş varyant: ritme senkronize kıyafet geçişleri için birden fazla karakter referansı yükleyin. 161 beğeni / 9B görünüm.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/dance_case13/output.jpg" width="400" alt="Dans dizisi ızgara çıktısı"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/dance_case13/output.jpg" width="400" alt="Dans dizisi ızgara çıktısı"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/39376245-e7c7-4812-b770-9e81acf4eca2" width="400" controls></video></td>
 </tr></table>
 
@@ -719,20 +764,23 @@ Character from Image 1 performs the dance based on the breakdown in Image 3. Mid
 ```
 
 > [!NOTE]
-> Bu teknik herhangi bir hareket dizisi için işe yarar — dans, dövüş sanatları, spor. 4×4 ızgara Seedance'e aralarında enterpolasyon yapacağı 16 referans kare verir ve daha az panelden daha akıcı hareket üretir.
+> Izgara yöntemi bir topluluk deneyidir ve sıra niyetini aktarabilir; daha az hata veya daha doğru hareket gösteren kontrollü test burada yoktur.
 >
 > **Topluluk varyantları:** [@airina_xyz](https://x.com/airina_xyz/status/2049830199236190326) temel iş akışını bir sokak dansçısıyla gösterdi. [@Kashberg_0](https://x.com/Kashberg_0/status/2049697925262102689) K-Pop koreografisi için karakter panoları + hareket referans kareleri kullandı (52 beğeni / 2B görünüm).
 
 
 <!-- Case 14: Comic Page → Animated Video (by @nimentrix) -->
+<a id="case-14"></a>
 ### Vaka 14: [Çizgi Roman Sayfası → Animasyonlu Video](https://x.com/nimentrix/status/2049560412979708334) (by [@nimentrix](https://x.com/nimentrix))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 ile çok panelli bir çizgi roman sayfası oluşturun — çapraz düzen, konuşma balonları, sinematik hikaye anlatımı — ardından tüm sayfayı Seedance 2.0 ile videoya dönüştürün. Model çizgi roman panellerini bir anlatı dizisi olarak okur ve sürekli bir animasyonlu kısa film üretir. 330 beğeni / 21B görünüm / 360 yer imi.
 
 <table><tr>
-<td align="center"><strong>GPT Image 2 Girişleri</strong><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/comic_case14/input1.jpg" width="260" alt="Karakter referansı 1 — ejderha"></a></td>
-<td align="center"><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/comic_case14/input2.jpg" width="260" alt="Karakter referansı 2 — çocuk"></a></td>
-<td align="center"><strong>Seedance 2.0 Girişi</strong><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/comic_case14/input3.jpg" width="260" alt="GPT Image 2 ile üretilmiş çizgi roman sayfası"></a></td>
+<td align="center"><strong>GPT Image 2 Girişleri</strong><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/comic_case14/input1.jpg" width="260" alt="Karakter referansı 1 — ejderha"></a></td>
+<td align="center"><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/comic_case14/input2.jpg" width="260" alt="Karakter referansı 2 — çocuk"></a></td>
+<td align="center"><strong>Seedance 2.0 Girişi</strong><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/comic_case14/input3.jpg" width="260" alt="GPT Image 2 ile üretilmiş çizgi roman sayfası"></a></td>
 </tr></table>
 
 <table><tr>
@@ -773,9 +821,12 @@ Smooth transitions between panels, maintain character consistency, cinematic cam
 
 
 <!-- Case 25: K-Pop Choreography with Detailed Control (by @Kashberg_0) -->
+<a id="case-25"></a>
 ### Vaka 25: [K-Pop Koreografi — Detaylı Kontrol](https://x.com/Kashberg_0/status/2049839091899088948) (by [@Kashberg_0](https://x.com/Kashberg_0))
 
-Dans animasyonu üzerinde maksimum kontrol: hassas hareket açıklamalarıyla 16 adımlık bir koreografi dökümü yazın, GPT Image 2 ile referans ızgarasını üretin, ardından Seedance 2.0 ile canlandırın. Her adım 2–3 saniye alır ve otantik K-pop hareket kalitesiyle 35–50 saniyelik sürekli bir dans videosu üretir.
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
+
+Koreografi uzun bir bitmiş diziyi tarif eder. Seedance 2.5 için en fazla 30 saniyelik isteklere bölün veya sıkıştırın, ardından sonuçları birleştirin ya da uzatın; tarihî prompt tek çağrıda 35–50 saniye desteği göstermez.
 
 <table><tr>
 
@@ -887,16 +938,19 @@ No camera cuts that break continuity
 ```
 
 > [!NOTE]
-> Adım açıklamalarınız ne kadar spesifik olursa Seedance koreografiyi o kadar iyi takip eder. Belirsiz açıklamalar yerine gerçek dans hareketlerini adlandırın (body roll, hair flip, chest pop). Bu teknik dövüş sanatları kata'ları, yoga akışları veya herhangi bir sıralı hareket için de işe yarar.
+> Koreografi uzun bir bitmiş diziyi tarif eder. Seedance 2.5 için en fazla 30 saniyelik isteklere bölün veya sıkıştırın, ardından sonuçları birleştirin ya da uzatın; tarihî prompt tek çağrıda 35–50 saniye desteği göstermez.
 
 
 <!-- Case 27: Character Intro Animation (by @0xbisc) -->
+<a id="case-27"></a>
 ### Vaka 27: [Karakter Tanıtım Animasyonu](https://x.com/0xbisc/status/2049496584283656690) (by [@0xbisc](https://x.com/0xbisc))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Siberpunk AAA oyun tarzında bir karakter tanıtım animasyonu oluşturun. Herhangi bir karakter görselini alın, GPT Image 2 ile oyun karakteri olarak yeniden tasarlayın, sinematik bir tanıtım ekranı üretin, ardından Seedance 2.0 ile açılışı canlandırın. Herhangi bir karakteri yerleştirin — iş akışı karakterden bağımsızdır. 55 beğeni / 3B görünüm.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/intro_case27/output.jpg" width="400" alt="Karakter tanıtım animasyonu çıktısı"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/intro_case27/output.jpg" width="400" alt="Karakter tanıtım animasyonu çıktısı"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/e52eaa0b-b2fa-4c35-b790-a92af05d0c82" width="400" controls></video></td>
 </tr></table>
 
@@ -957,13 +1011,16 @@ secondary UI fades and slides in smoothly
 ## 🎵 Müzik Videosu ve Kısa Film
 
 <!-- Case 7: Music Video with Suno (by @fukaborichannel) -->
+<a id="case-7"></a>
 ### Vaka 7: [Suno ile Müzik Videosu](https://x.com/fukaborichannel/status/2047206670020055317) (by [@fukaborichannel](https://x.com/fukaborichannel))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Üç araç kombinasyonu: görseller için GPT Image 2, hareket için Seedance 2.0, müzik için Suno. Tempo ve yapıyı sabitlemek için önce müziği üretin, ardından ritme uygun storyboard'lar tasarlayın.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/music_case7/input.jpg" width="280" alt="MV için GPT Image 2 ile üretilmiş storyboard"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/music_case7/output.jpg" width="280" alt="Müzik videosu çıktı karesi"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/music_case7/input.jpg" width="280" alt="MV için GPT Image 2 ile üretilmiş storyboard"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/music_case7/output.jpg" width="280" alt="Müzik videosu çıktı karesi"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/fd4be5c7-cd02-4a77-ae07-6b80efeff201" width="280" controls></video></td>
 </tr></table>
 
@@ -980,12 +1037,15 @@ secondary UI fades and slides in smoothly
 
 
 <!-- Case 8: Cyberpunk Style Short Film (by @ponyodong) -->
+<a id="case-8"></a>
 ### Vaka 8: [Siberpunk Tarzında Kısa Film](https://x.com/ponyodong/status/2047210987263230133) (by [@ponyodong](https://x.com/ponyodong))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 ile tutarlı bir görsel stil oluşturun (siberpunk, neon, fenerler, feminen estetik), ardından her görseli Seedance 2.0 ile canlandırarak duvar kağıdı, poster ve hikaye açılışı arasında bir yerde duran kısa stilize bir film üretin.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/cyberpunk_case8/input.jpg" width="280" alt="GPT Image 2 ile üretilmiş siberpunk illüstrasyon"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/cyberpunk_case8/input.jpg" width="280" alt="GPT Image 2 ile üretilmiş siberpunk illüstrasyon"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/db6ebb63-90dc-47c5-96c5-ab2fa53ed56d" width="280" controls></video></td>
 </tr></table>
 
@@ -998,7 +1058,10 @@ GPT Image 2 ile tutarlı bir görsel stil oluşturun (siberpunk, neon, fenerler,
 
 
 <!-- Case 11: Japanese MV Full Toolchain (by @Tz_2022) -->
+<a id="case-11"></a>
 ### Vaka 11: [Japon MV — Tam AI Toolchain](https://x.com/Tz_2022/status/2047684399404056609) (by [@Tz_2022](https://x.com/Tz_2022))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Tam bir Japon tarzı müzik videosu üreten dört araçlı pipeline: görseller için GPT Image 2 → hareket için Seedance 2.0 → müzik için Suno 5.5 → son düzenleme için CapCut. 742 beğeni / 107B görünüm.
 
@@ -1019,12 +1082,15 @@ Tam bir Japon tarzı müzik videosu üreten dört araçlı pipeline: görseller 
 
 
 <!-- Case 20: Claude Shotlist → MV (by @CoffeeVectors) -->
+<a id="case-20"></a>
 ### Vaka 20: [Claude Çekim Listesi → Müzik Videosu](https://x.com/CoffeeVectors/status/2049592150581485757) (by [@CoffeeVectors](https://x.com/CoffeeVectors))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Claude'u detaylı bir çekim listesi üretmek için kullanın (farklı kamera açıları ve eylemlerle 15 bir saniyelik klip), GPT Image 2 ile tek bir portre üretin, ardından her çekimi Seedance 2.0 ile üretin. Klipleri kendi Suno müziğinizle birleştirerek tam bir MV elde edin. AI yaratıcı yönetimi yazar — siz sadece uygularsınız.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/shotlist_case20/input.jpg" width="400" alt="Claude çekim listesi müzik videosu çıktısı"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/shotlist_case20/input.jpg" width="400" alt="Claude çekim listesi müzik videosu çıktısı"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/d6ba86c4-65c3-4b1d-aa3c-846667f53b5e" width="400" controls></video></td>
 </tr></table>
 
@@ -1066,12 +1132,15 @@ Style: Photorealistic dark holy fantasy, prestige-TV aesthetic. Anamorphic 35mm,
 ## 🎮 Oyun Konsepti
 
 <!-- Case 9: Game & Interactive Content (by @AbleGPT) -->
+<a id="case-9"></a>
 ### Vaka 9: [Oyun ve Etkileşimli İçerik](https://x.com/op7418/status/2046854932620525750) (by [@op7418](https://x.com/op7418))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 GPT Image 2 ile oyun tarzı arayüz görselleri (HUD öğeleri, yetenek çubukları, seçim katmanları ile) üretin, ardından bunları Seedance 2.0'da canlandırarak etkileşimli oyun dizilerini simüle edin. Oyun ve illüstrasyon stilleri Seedance'te gerçekçi insan görüntülerine göre daha az içerik kısıtlamasıyla karşılaşır.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/game_case9/input.jpg" width="400" alt="Oyun arayüzü giriş görseli"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/game_case9/input.jpg" width="400" alt="Oyun arayüzü giriş görseli"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/3d5d7525-b469-4c3b-aab9-68dc47630fdd" width="400" controls></video></td>
 </tr></table>
 
@@ -1118,12 +1187,15 @@ Generate an ARPG dialogue game screenshot inspired by [film/series name]
 
 
 <!-- Case 17: Game Interface Animation Full Pipeline (by @0xInk_) -->
+<a id="case-17"></a>
 ### Vaka 17: [Oyun Arayüzü Animasyonu — Tam Pipeline](https://x.com/0xInk_/status/2048809000121360649) (by [@0xInk_](https://x.com/0xInk_))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Bu koleksiyondaki en viral iş akışı: sıfırdan tam bir video oyunu arayüz animasyonu oluşturun. Midjourney'de 2D bir karakterle başlayın, GPT Image 2 ile 3D oyuna hazır görünüme dönüştürün, tam oyun arayüzünü (HUD, yükleme ekranları, menüler) tasarlayın, ardından her şeyi Seedance 2.0 ile canlandırın. GPT Image 2 burada öne çıkar çünkü arayüz detaylarını iyi işler ve kalite kaybı olmadan iteratif düzenlemeye izin verir. 2280 beğeni / 208B görünüm / 2793 yer imi.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/game_case17/output.jpg" width="400" alt="Oyun arayüzü animasyonu çıktısı"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/game_case17/output.jpg" width="400" alt="Oyun arayüzü animasyonu çıktısı"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/b83da8f3-3dd6-44a3-bb27-b0d59cab381a" width="400" controls></video></td>
 </tr></table>
 
@@ -1133,7 +1205,10 @@ Bu koleksiyondaki en viral iş akışı: sıfırdan tam bir video oyunu arayüz 
 
 
 <!-- Case 24: GTA-Style City Game Concept (by @markgadala) -->
+<a id="case-24"></a>
 ### Vaka 24: [GTA Tarzı Şehir Oyun Konsepti](https://x.com/markgadala/status/2048560337960489385) (by [@markgadala](https://x.com/markgadala))
+
+> **EvoLink uyarlaması:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 5 dakikada istediğiniz herhangi bir GTA versiyonunu oluşturun. GPT Image 2 ile herhangi bir şehirde (Tokyo, Lagos, Mumbai) geçen oyun arayüzü ekran görüntüleri üretin, ardından Seedance 2.0 ile oyun görüntüsüne dönüştürün. Sonuç, var olmayan bir oyunun gerçek oyun fragmanı gibi görünür. 99 beğeni / 8.7B görünüm.
 
@@ -1156,23 +1231,29 @@ Bu koleksiyondaki en viral iş akışı: sıfırdan tam bir video oyunu arayüz 
 ## 🛠 Üretim Araçları
 
 <!-- Case 18: Single Agent Automated Workflow (by @venturetwins) -->
+<a id="case-18"></a>
 ### Vaka 18: [Tek Agent Otomatik İş Akışı](https://x.com/venturetwins/status/2048526911056613586) (by [@venturetwins](https://x.com/venturetwins))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Sıfır çaba yaklaşımı: tek bir AI agent'a (Glif gibi) ne istediğinizi söyleyin ve tüm pipeline'ı — GPT Image 2 ile storyboard üretme ve Seedance 2.0 ile canlandırma — tek bir konuşmada halleder. Manuel dosya transferi yok, adım başına prompt mühendisliği yok. 934 beğeni / 70B görünüm.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/agent_case18/output.jpg" width="400" alt="Tek agent otomatik iş akışı çıktısı"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/agent_case18/output.jpg" width="400" alt="Tek agent otomatik iş akışı çıktısı"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/cc01849d-ee9b-47af-a7b0-d13250a001e0" width="400" controls></video></td>
 </tr></table>
 
 
 <!-- Case 21: Casting Grid Actor Audition (by @8fstudioz) -->
+<a id="case-21"></a>
 ### Vaka 21: [Oyuncu Seçimi Izgarası — Oyuncu Audition](https://x.com/8fstudioz/status/2049547426198151627) (by [@8fstudioz](https://x.com/8fstudioz))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Tek bir üretimden 4 oyuncuyu deneyerek kredi tasarrufu yapın. GPT Image 2 ile aynı rol için farklı oyuncuları gösteren 4 panelli bir seçim ızgarası üretin, ardından her birini Seedance 2.0'da aynı diyalog repliğiyle test edin. Tam bir videoya kredi harcamadan önce hangi oyuncunun daha fazla kredi harcamaya değer olduğunu öğrenin.
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/casting_case21/input.jpg" width="400" alt="Oyuncu seçimi ızgarası girişi"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/casting_case21/input.jpg" width="400" alt="Oyuncu seçimi ızgarası girişi"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/dcdd958f-70cd-43f6-b191-4e0715fe2472" width="400" controls></video></td>
 </tr></table>
 
@@ -1339,7 +1420,10 @@ A clean casting audition reel where four actor candidates perform the same line 
 
 
 <!-- Case 22: 3D Sculpt → AI Render → Animation (by @_DAntunes_) -->
+<a id="case-22"></a>
 ### Vaka 22: [3D Heykel → AI Render → Animasyon](https://x.com/_DAntunes_/status/2049142166232904078) (by [@_DAntunes_](https://x.com/_DAntunes_))
+
+> **EvoLink uyarlaması:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 Geleneksel 3D modelleme ile AI videoyu birleştirin: Nomad Sculpt'ta (veya herhangi bir heykel uygulamasında) kaba bir 3D kil modeli oluşturun, GPT Image 2 ile cilalı bir illüstrasyona dönüştürün, ardından ComfyUI aracılığıyla Seedance 2.0 ile canlandırın. Bu, saf metin prompt'larının sağlayamayacağı poz ve kompozisyon üzerinde hassas kontrol verir.
 
@@ -2139,105 +2223,23 @@ X’te yaratıcıların paylaştığı **GPT Image 2 × Seedance 2.0** işlerind
 <td align="center" valign="top" width="25%"></td>
 </tr></table>
 
-## 💡 İpuçları ve Teknikler
+<a id="parameters"></a>
+## Parametreler ve uygulama kontrolleri
 
-### Tutarlılık Rehberi
+Seedance 2.5 I2V ilk veya ilk/son kare için 1–2 `image_urls` ve yalnızca `aspect_ratio: "adaptive"` kabul eder; oranı görüntüde hazırlayın. 4–30 saniye üretin, kısa çekimleri kurguda kesin, uzun dizileri birleştirin veya uzatın. API 480p/720p/1080p sunar; başka ürünlerin 4K iddiası burada destek kanıtı değildir. Prompt’a 24fps yazmak kare hızı parametresi ayarlamaz. Ayrıntı, kimlik, hareket ve sesi kontrol edin; ızgara ve prompt uzunluğu tutarlılığı garanti etmez. Sabit çarpan yerine gerçek ücretleri karşılaştırın.
 
-GPT Image 2 çıktıları arasında ve Seedance 2.0 animasyonu boyunca görsel tutarlılığı korumak en yaygın zorluktur. Bu yaklaşımlar her katmanı ele alır.
+[@Iancu_ai — community prompt experiment](https://x.com/Iancu_ai/status/2047882924679168083)
 
-**Ürün görseli tutarlılığı**
+[API / errors / recovery](docs/api-workflow.md) · [Maintenance](docs/maintenance.md)
 
-Seedance'te ürün bozulmasının temel nedeni, hareket enterpolasyonunun ince detayları yeniden yazmasıdır — logolar, dokular ve yüzey desenleri değiştirilir.
+<a id="related-resources"></a>
+## İlgili kaynaklar
 
-Çözümler:
-- Seedance prompt'unuza `keep the product appearance completely unchanged, camera movement only, no rotation` ekleyin
-- Konu hareketi yerine kamera hareketi seçin (push-in, pull-out) — ürünü sabit tutun ve kamerayı hareket ettirin
-- Klip süresini 3 saniyenin altında tutun — daha kısa klipler daha az bozulma biriktirir
-
-**Karakter tutarlılığı**
-
-- Önce bir üç görünüm karakter sheet'i üretin ve bunu sonraki tüm storyboard kareleri için görsel sabit referans olarak kullanın
-- Her storyboard paneli prompt'una kısa bir karakter açıklaması (saç rengi, kıyafet, vücut yapısı) ekleyin
-- Tek bir klip içinde karakter perspektifini değiştirmekten kaçının
-
-**Sahne tutarlılığı**
-
-GPT Image 2'de birden fazla storyboard paneli üretirken, sahne parametrelerini prompt'unuzun başına sabitleyin:
-
-```
-Scene setting: [location], [time of day], [lighting direction], [fixed background elements].
-Maintain this scene setting unchanged across all panels.
-```
-
----
-
-### Prompt Şablonları
-
-**GPT Image 2 → Storyboard şablonu**
-
-```
-Create a [N]-panel storyboard for [subject]:
-- Style: [realistic / anime / illustration / cinematic]
-- Aspect ratio: 16:9 widescreen
-- Each panel: include shot type (wide / medium / close-up) + action description
-- Character: [fixed appearance description]
-- Scene tone: [color palette / lighting / mood]
-Output as a single image with [N] panels separated by thin lines.
-```
-
-**GPT Image 2 → 3×3 ızgara şablonu**
-
-```
-Output a single 3×3 grid storyboard image showing the following continuous action:
-[describe the action sequence]
-Requirements:
-- 9 panels arranged left-to-right, top-to-bottom showing continuous motion
-- Character position and scale consistent across all panels
-- Background consistent throughout
-- No text, labels, or content outside the panel borders
-```
-
-**Seedance 2.0 → Anime tarzı şablonu**
-
-```
-Japanese full-color animation, high-speed editing, high frame count, 24fps.
-[Scene description]. [Character description]. [Action description].
-Strong camera work, high visual impact.
-```
-
-**Seedance 2.0 → Reklam tarzı şablonu**
-
-```
-Cinematic commercial quality, [brand tone: premium / energetic / warm],
-[product] centered in frame, slow camera push-in,
-[lighting direction] highlights the product, clean background, no people.
-Duration: 3 seconds.
-```
-
-**Prompt uzunluğu — kısa genellikle kazanır**
-
-[@Iancu_ai](https://x.com/Iancu_ai/status/2047882924679168083) aracılığıyla topluluk deneyi: 1500 kelimelik sinema kalitesinde bir Seedance prompt'u tek bir cümleye kaybetti. Aynı karakter, aynı 15 saniye. Kısa prompt kazandı. Seedance, ayrıntılı sahne açıklaması yerine yönlendirici netliği ödüllendirir — sahnenin her detayını değil, hareket niyetini yazın.
-
-## 🚀 Evolink Üzerinde Deneyin
-
-Evolink, GPT Image 2 ve Seedance 2.0'ı tek bir yerde çalıştırmanıza olanak tanır — platform değiştirme yok, dosya yeniden yükleme yok.
-
-**Neden Evolink**
-
-- GPT Image 2 ve Seedance 2.0 için tek API anahtarı
-- Aynı arayüzde doğrudan görüntüden videoya aktarım — bir görüntü üretin ve indirmeden "Videoya Gönder"e tıklayın
-- Toplu işleme — sıralı video üretimi için birden fazla storyboard panelini kuyruğa alın
-
-**Nasıl kullanılır**
-
-```
-Step 1: Open Evolink → select GPT Image 2 → generate your storyboard image
-Step 2: Click "Generate Video" → Seedance 2.0 receives the image automatically
-Step 3: Add your Seedance prompt → generate
-```
-
-<a href='https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=gptimage2-x-seedance2'><img src='https://img.shields.io/badge/🚀 Get%20Started-Evolink-black' height="25"></a>
-
+- [GPT Image 2 prompts](https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=image_prompts)
+- [Seedance 2.5 prompts](https://github.com/EvoLinkAI/awesome-seedance-2.5-prompts)
+- [Seedance 2.5 guide](https://github.com/EvoLinkAI/awesome-seedance-2.5-guide)
+- [GPT Image 2 Skill](https://github.com/EvoLinkAI/gpt-image-2-gen-skill) — GPT Image 2
+- [Legacy Seedance Skill](https://github.com/EvoLinkAI/seedance2-video-gen-skill-for-openclaw) — **Seedance 2.0**, `npx evolink-seedance`; [Seedance 2.5 → MCP / CLI](https://evolink.ai/mcp?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=current_video_route)
 
 ## 🙏 Teşekkür
 
