@@ -1,10 +1,10 @@
 <div align="center">
 
-<a href="https://evolink.ai/launch/seedance-2-5?utm_source=github&utm_medium=banner&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow"><img src="images/logo.png" alt="GPT Image 2 × Seedance 2.5 工作流程指南"></a>
+<a href="https://evolink.ai/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=banner"><img src="images/workflow-banner.svg" alt="GPT Image 2 × Seedance 2.5 工作流程指南"></a>
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](LICENSE)
 [![awesome-seedance-2.5-prompts](https://img.shields.io/badge/📦_awesome--seedance--2.5--prompts-181717?logo=github)](https://github.com/EvoLinkAI/awesome-seedance-2.5-prompts)
-[![Seedance-2.5-Gateway-Service](https://img.shields.io/badge/📦_Seedance--2.5--Gateway--Service-181717?logo=github)](https://github.com/EvoLinkAI/Seedance-2.5-Gateway-Service)
+[![EvoLink MCP / CLI](https://img.shields.io/badge/EvoLink-MCP%20%2F%20CLI-181717)](https://evolink.ai/mcp?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=top_badge)
 [![awesome-seedance-2.5-guide](https://img.shields.io/badge/📦_awesome--seedance--2.5--guide-181717?logo=github)](https://github.com/EvoLinkAI/awesome-seedance-2.5-guide)
 [![awesome-gpt-image-2-prompts](https://img.shields.io/badge/📦_awesome--gpt--image--2--prompts-181717?logo=github)](https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts)
 
@@ -23,129 +23,139 @@
 
 </div>
 
+# GPT Image 2 × Seedance 2.5
 
+先用 GPT Image 2 確認畫面，再用 Seedance 2.5 生成影片，適用於產品廣告、角色鏡頭與分鏡，提供 Agent 與 API 兩種操作路線
 
+> 文件與 schema 核對日期為 2026-10-21，新教學是倉庫編寫的示例，未宣稱完成真實生成或效能實測
 
-## 🎬 介紹
+<a id="quick-start"></a>
+## 快速開始
 
-歡迎來到 GPT Image 2 × Seedance 2.5 工作流程儲存庫！🤗
+**Seedance 2.5 — 已在 EvoLink 開放**
 
-**我們整理了經過驗證的工作流程、提示詞範本，以及真實創作者案例，幫助你結合 GPT Image 2 與 Seedance 2.5 製作高品質 AI 影片。**
+[EvoLink MCP / CLI](https://evolink.ai/mcp?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=agent_setup) · [Seedance 2.5](https://evolink.ai/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=model) · [API key](https://evolink.ai/dashboard/keys?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=api_key) · [Sign up](https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=signup)
 
-GPT Image 2 負責「畫什麼」以及畫面一致性；Seedance 2.0 負責「怎麼動」——把這些圖片轉成影片。兩者結合後，形成了目前最強大的 AI 影片製作流程之一。
-
-本儲存庫中的多數案例，皆整理自 X/Twitter 創作者、社群實驗與真實製作流程。
-
-立即試用：[GPT Image 2 + Seedance 2.5](https://evolink.ai/launch/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow)
-
-### 快速使用
-
-- [GPT Image 2 Gen Skill](https://github.com/EvoLinkAI/gpt-image-2-gen-skill) 為你的 Agent 加入 GPT Image 2 圖像生成與編輯能力
-- [Seedance 2 Video Gen Skill](https://github.com/EvoLinkAI/seedance2-video-gen-skill-for-openclaw) 為你的 Agent 加入 Seedance 2 影片生成能力
-
-### 快速安裝
-
-#### 直接在 Terminal 執行
+支援遠端 MCP 的客戶端請依設定頁連線；終端 Agent 使用下方 CLI（需要 Node.js 22+），在瀏覽器登入後安裝配套 Skill，每次生成前先查詢兩個指定模型的素材要求、參數與費用
 
 ```bash
-npx evolink-gpt-image@latest
-npx evolink-seedance@latest
+npm install -g @evolinkai/cli@latest
+evolink auth login
+evolink skills install
+evolink models schema gpt-image-2 --json
+evolink models schema seedance-2.5-image-to-video --json
 ```
 
-如果是你自己在 Terminal 手動安裝，可以直接執行這兩行。安裝器會盡量自動判斷已知的 skills 目錄；如果找不到，會繼續詢問安裝位置。
+```text
+Use EvoLink to turn my product photo into a five-second product video.
+Use GPT Image 2 for one 16:9 scene, then Seedance 2.5 for animation.
+Check current inputs, parameters and costs first; ask me before each paid task.
+Show me the image before creating the video. Keep the product still and use
+a gentle camera push-in. No dialogue or music; request silent video.
+Inspect product details instead of promising exact logo or identity preservation.
+Pass the approved image URL as the first frame with aspect_ratio=adaptive.
+Poll the original task ID, then return the video and save a local copy.
+```
 
-#### Claude Code
+<a id="product-workflow"></a>
+## 產品圖到影片
+
+準備有權使用的產品圖及公開圖片 URL，也可讓 Agent 先上傳本機檔案；用 GPT Image 2 生成一張 16:9 產品場景圖；檢查產品、Logo、構圖與圖片尺寸；將確認後的圖片結果 URL 作為 Seedance 2.5 首幀；持續查詢原 Task ID，完成後儲存影片，再用剪輯工具加入最終文字
+
+[完整 API 操作教學（英文）](docs/api-workflow.md) · [GPT Image 2 API](https://evolink.ai/docs/en/api-manual/image-series/gpt-image-2/gpt-image-2-image-generation?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=image_docs) · [Seedance 2.5 I2V API](https://evolink.ai/docs/en/api-manual/video-series/seedance2.5/seedance-2.5-image-to-video?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=video_docs)
 
 ```bash
-npx evolink-gpt-image@latest -y --path ~/.claude/skills
-npx evolink-seedance@latest -y --path ~/.claude/skills
+# Set EVOLINK_API_KEY in your environment; use a real approved image URL.
+export APPROVED_IMAGE_URL="https://your-public-host.example/approved-scene.png"
+jq -n --arg image "$APPROVED_IMAGE_URL" '{
+  model: "seedance-2.5-image-to-video",
+  prompt: "Five-second product shot. The product stays still; gentle camera push-in. No dialogue or music.",
+  image_urls: [$image], duration: 5, quality: "720p",
+  aspect_ratio: "adaptive", generate_audio: false
+}' > video-request.json
+curl --fail-with-body --request POST \
+  https://api.evolink.ai/v1/videos/generations \
+  --header "Authorization: Bearer ${EVOLINK_API_KEY}" \
+  --header 'Content-Type: application/json' \
+  --data-binary @video-request.json --output video-created.json
+# Save .id from video-created.json; task creation is not video completion.
 ```
 
-#### OpenCode
+<a id="draft-workflow"></a>
+## 選用：樣片轉正式片
 
-```bash
-npx evolink-gpt-image@latest -y --path ~/.opencode/skills
-npx evolink-seedance@latest -y --path ~/.opencode/skills
+影片請求頂層設定 `draft: true`、`quality: "480p"`，檢查完成的樣片後，將其任務 ID 作為 `source_task_id` 提交至 `seedance-2.5-draft-to-video` 生成 1080p 正式片，兩次請求分別收費；預設樣片完成後 24 小時內可轉，以返回的 `draft_expires_at` 為準並預留排隊時間；樣片模式不可用時應停止，或明確選擇一般生成及其費用
+
+```json
+{
+  "model": "seedance-2.5-draft-to-video",
+  "source_task_id": "YOUR_COMPLETED_UNEXPIRED_DRAFT_TASK_ID",
+  "output_format": "mp4"
+}
 ```
 
-#### Cursor
+[Draft → 1080p](docs/api-workflow.md#optional-draft-to-final) · [Pricing](https://evolink.ai/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=pricing)
 
-```bash
-npx evolink-gpt-image@latest -y --path .cursor/skills
-npx evolink-seedance@latest -y --path .cursor/skills
-```
+<a id="community-examples"></a>
+## 歷史社群案例
 
-#### OpenClaw
+保留案例原有模型與平台描述、提示詞、作者連結與媒體，Seedance 2.0 案例是歷史參考，不能視為 Seedance 2.5 API 實測；過往倉庫編輯留下的模型標註尚未全部逐帖核對，請依各案例的遷移說明重新生成並驗收；原提示詞的創作要求不等於 API 參數契約
 
-```bash
-npx evolink-gpt-image@latest -y
-npx evolink-seedance@latest -y
-```
-
-上面的 Terminal 版本適合手動安裝；下面這些宿主專用命令更適合直接交給 AI Agent 執行，避免它繼續追問目錄位置。
-
-如果你覺得這個專案有幫助，歡迎幫我們點個 Star。⭐
-
-
-
-## 📰 最新消息
-
-- **2026 年 5 月 26 日：** [🌟 社群精選](#-社群精選) 新增 30 個來自 5 月 17 日–23 日批次的作品（slug 104–133）
-- **2026 年 5 月 2 日：** 新增 [🌟 社群精選](#-社群精選) — X 平台 70 個最新 GPT Image 2 × Seedance 2.5 作品（4 月 29 日 – 5 月 2 日）
+<a id="menu"></a>
 ## 📑 目錄
 
-- [🎬 介紹](#-介紹)
-- [📰 最新消息](#-最新消息)
-- [📑 目錄](#-目錄)
+- [快速開始](#quick-start)
+- [產品圖到影片](#product-workflow)
+- [選用：樣片轉正式片](#draft-workflow)
+- [歷史社群案例](#community-examples)
+- [參數與實際檢查](#parameters)
+- [相關資源](#related-resources)
 - [🎥 分鏡技巧](#-分鏡技巧)
-  - [案例 1：標準分鏡 → 影片（by @kiyoshi_shin）](#case-1-standard-storyboard--video-by-kiyoshi_shin)
-  - [案例 2：3×3 宮格分鏡法（by @servasyy_ai）](#case-2-33-grid-storyboard-method-by-servasyy_ai)
-  - [案例 10：多幀參考 → 快剪影片（by @heygentlewhale）](#case-10-multi-frame-reference--fast-cut-video-by-heygentlewhale)
-  - [案例 19：分鏡優先的成本控管（by @0xbisc）](#case-19-storyboard-first-cost-control-by-0xbisc)
+  - [Case 1: 標準分鏡 → 影片（by @kiyoshi_shin）](#case-1)
+  - [Case 2: 3×3 宮格分鏡法（by @servasyy_ai）](#case-2)
+  - [Case 10: 多幀參考 → 快剪影片（by @heygentlewhale）](#case-10)
+  - [Case 19: 分鏡優先的成本控管（by @0xbisc）](#case-19)
 - [📱 商業與產品](#-商業與產品)
-  - [案例 5：App MVP 展示影片（by @Shin_Engineer）](#case-5-app-mvp-demo-video-by-shin_engineer)
-  - [案例 6：15 秒商業廣告（by @ai_mitosan）](#case-6-15-second-commercial-by-ai_mitosan)
-  - [案例 15：奢華廣告 — 分鏡到成片（by @insmind_com）](#case-15-luxury-commercial--storyboard-to-film-by-insmind_com)
-  - [案例 16：電影感美食影片（by @kingofdairyque）](#case-16-cinematic-food-video-by-kingofdairyque)
-  - [案例 26：商品圖 → 短影音廣告（by @insmind_com）](#case-26-product-image--short-video-ad-by-insmind_com)
+  - [Case 5: App MVP 展示影片（by @Shin_Engineer）](#case-5)
+  - [Case 6: 15 秒商業廣告（by @ai_mitosan）](#case-6)
+  - [Case 15: 奢華廣告 — 分鏡到成片（by @insmind_com）](#case-15)
+  - [Case 16: 電影感美食影片（by @kingofdairyque）](#case-16)
+  - [Case 26: 商品圖 → 短影音廣告（by @insmind_com）](#case-26)
 - [🎨 動畫與角色](#-動畫與角色)
-  - [案例 3：角色三視圖 → 動畫（by @YaReYaRu30Life）](#case-3-character-sheet--animation-by-yareyaru30life)
-  - [案例 4：動畫 OP 風格影片（by @Toshi_nyaruo_AI）](#case-4-anime-op-style-video-by-toshi_nyaruo_ai)
-  - [案例 12：Claude Code × 角色設定圖 → 動畫（by @old_pgmrs_will）](#case-12-claude-code--character-sheet--animation-by-old_pgmrs_will)
-  - [案例 13：舞蹈序列宮格 → 舞蹈影片（by @Ciri_ai）](#case-13-dance-sequence-grid--dance-video-by-ciri_ai)
-  - [案例 14：漫畫頁 → 動畫影片（by @nimentrix）](#case-14-comic-page--animated-video-by-nimentrix)
-  - [案例 25：K-Pop 編舞 — 精細控制（by @Kashberg_0）](#case-25-k-pop-choreography--detailed-control-by-kashberg_0)
-  - [案例 27：角色登場動畫（by @0xbisc）](#case-27-character-intro-animation-by-0xbisc)
+  - [Case 3: 角色三視圖 → 動畫（by @YaReYaRu30Life）](#case-3)
+  - [Case 4: 動畫 OP 風格影片（by @Toshi_nyaruo_AI）](#case-4)
+  - [Case 12: Claude Code × 角色設定圖 → 動畫（by @old_pgmrs_will）](#case-12)
+  - [Case 13: 舞蹈序列宮格 → 舞蹈影片（by @Ciri_ai）](#case-13)
+  - [Case 14: 漫畫頁 → 動畫影片（by @nimentrix）](#case-14)
+  - [Case 25: K-Pop 編舞 — 精細控制（by @Kashberg_0）](#case-25)
+  - [Case 27: 角色登場動畫（by @0xbisc）](#case-27)
 - [🎵 音樂影片與短片](#-音樂影片與短片)
-  - [案例 7：結合 Suno 的音樂影片（by @fukaborichannel）](#case-7-music-video-with-suno-by-fukaborichannel)
-  - [案例 8：賽博龐克風格短片（by @ponyodong）](#case-8-cyberpunk-style-short-film-by-ponyodong)
-  - [案例 11：日系 MV — 全 AI 工具鏈（by @Tz_2022）](#case-11-japanese-mv--full-ai-toolchain-by-tz_2022)
-  - [案例 20：Claude 鏡頭表 → 音樂影片（by @CoffeeVectors）](#case-20-claude-shotlist--music-video-by-coffeevectors)
+  - [Case 7: 結合 Suno 的音樂影片（by @fukaborichannel）](#case-7)
+  - [Case 8: 賽博龐克風格短片（by @ponyodong）](#case-8)
+  - [Case 11: 日系 MV — 全 AI 工具鏈（by @Tz_2022）](#case-11)
+  - [Case 20: Claude 鏡頭表 → 音樂影片（by @CoffeeVectors）](#case-20)
 - [🎮 遊戲概念](#-遊戲概念)
-  - [案例 9：遊戲與互動內容（by @op7418）](#case-9-game--interactive-content-by-op7418)
-  - [案例 17：遊戲介面動畫 — 完整流程（by @0xInk_）](#case-17-game-interface-animation--full-pipeline-by-0xink_)
-  - [案例 24：GTA 風格城市遊戲概念（by @markgadala）](#case-24-gta-style-city-game-concept-by-markgadala)
+  - [Case 9: 遊戲與互動內容（by @op7418）](#case-9)
+  - [Case 17: 遊戲介面動畫 — 完整流程（by @0xInk_）](#case-17)
+  - [Case 24: GTA 風格城市遊戲概念（by @markgadala）](#case-24)
 - [🛠 製作工具](#-製作工具)
-  - [案例 18：單一 Agent 自動化工作流程（by @venturetwins）](#case-18-single-agent-automated-workflow-by-venturetwins)
-  - [案例 21：選角宮格 — 演員試鏡（by @8fstudioz）](#case-21-casting-grid--actor-audition-by-8fstudioz)
-  - [案例 22：3D 雕塑 → AI 渲染 → 動畫（by @_DAntunes_）](#case-22-3d-sculpt--ai-render--animation-by-_dantunes_)
+  - [Case 18: 單一 Agent 自動化工作流程（by @venturetwins）](#case-18)
+  - [Case 21: 選角宮格 — 演員試鏡（by @8fstudioz）](#case-21)
+  - [Case 22: 3D 雕塑 → AI 渲染 → 動畫（by @_DAntunes_）](#case-22)
 - [🌟 社群精選](#-社群精選)
-- [💡 技巧與方法](#-技巧與方法)
-  - [一致性指南](#一致性指南)
-  - [提示詞範本](#提示詞範本)
-- [🚀 在 Evolink 試用](#-在-evolink-試用)
-- [🙏 致謝](#-致謝)
-
 
 ## 🎥 分鏡技巧
 
 <!-- Case 1: Standard Storyboard → Video (by @kiyoshi_shin) -->
+<a id="case-1"></a>
 ### Case 1: [標準分鏡 → 影片](https://x.com/kiyoshi_shin/status/2047133524403400847)（by [@kiyoshi_shin](https://x.com/kiyoshi_shin)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 最常見的工作流程。先用 GPT Image 2 生成分鏡畫面，再交給 Seedance 2.0 製作動畫。非常適合宣傳影片、短篇劇情與動畫 OP。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/storyboard_case1/input.jpg" width="280" alt="GPT Image 2 生成的分鏡"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/storyboard_case1/input.jpg" width="280" alt="GPT Image 2 生成的分鏡"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/ac25fc3d-b6cb-4149-a8ba-e7e10c5b1faa" width="280" controls></video></td>
 </tr></table>
 
@@ -170,16 +180,19 @@ Cinematic brand advertisement, slow camera push-in, product centered in frame, w
 ```
 
 > [!NOTE]
-> 建議將分鏡圖輸出為 16:9，避免 Seedance 自動裁切。幀率設定為 24fps 以符合電影標準。每格分鏡請盡量簡潔——內容越單純，動作輸出通常越準確。
+> 目前 2.5 單次生成 4–30 秒，較短鏡頭在剪輯時裁切；I2V 僅接受 adaptive，請預先設定圖片比例；提示詞中的 24fps 不是 API 幀率參數
 
 
 <!-- Case 2: 3×3 Grid Storyboard Method (by @servasyy_ai) -->
+<a id="case-2"></a>
 ### Case 2: [3×3 宮格分鏡法](https://x.com/servasyy_ai/status/2047198012750143999)（by [@servasyy_ai](https://x.com/servasyy_ai)）
 
-社群發現的一個關鍵技巧：先把所有分鏡格子組成單張 3×3 宮格圖片，再匯入 Seedance，失敗率會明顯低於逐幀分別匯入。
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
+
+這是社群嘗試的網格方法，可用於表達順序意圖，但倉庫沒有對照測試證明失敗率更低或動作更準確
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/storyboard_case2/output.jpg" width="400" alt="3×3 宮格分鏡輸出"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/storyboard_case2/output.jpg" width="400" alt="3×3 宮格分鏡輸出"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/00f32388-a17b-4b9c-8da3-1956436ce91b" width="400" controls></video></td>
 </tr></table>
 
@@ -205,16 +218,19 @@ turn this image into video
 ```
 
 > [!NOTE]
-> **使用前請先替換方括號中的內容。** 這種方法之所以有效，是因為 Seedance 會從單張圖片中分析動作意圖。宮格圖能提供方向性參考，相比多張獨立圖片，更容易產生連貫動作。
+> 這是社群嘗試的網格方法，可用於表達順序意圖，但倉庫沒有對照測試證明失敗率更低或動作更準確
 
 
 <!-- Case 10: Multi-Frame Reference Storyboard (by @heygentlewhale + @ai_gezgini) -->
+<a id="case-10"></a>
 ### Case 10: [多幀參考 → 快剪影片](https://x.com/heygentlewhale/status/2047969137969004946)（by [@heygentlewhale](https://x.com/heygentlewhale)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 向 Seedance 2.0 傳入一張包含多個參考幀的分鏡圖，並指示它依序跟隨場景。模型會將幀的位置解讀為場景提示，直接輸出連貫的快剪效果——無需手動拼接。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/storyboard_case10/input.jpg" width="280" alt="GPT Image 2 多幀分鏡"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/storyboard_case10/input.jpg" width="280" alt="GPT Image 2 多幀分鏡"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/4d7af334-4e49-4de4-899e-803f72116c21" width="280" controls></video></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/5def7e00-6fc6-4a4e-8075-5f37cb24b84c" width="280" controls></video></td>
 </tr></table>
@@ -255,16 +271,19 @@ and preserve cinematic lighting and pacing.
 ```
 
 > [!NOTE]
-> 此提示詞適用於多種風格——將風格描述替換為科幻、恐怖、紀錄片或其他任何形式皆可。關鍵句是 `follow the storyboard sequence of the [N] reference frames`——它告訴 Seedance 將幀的位置視為時間軸，而非單張構圖。
+> 這是社群嘗試的網格方法，可用於表達順序意圖，但倉庫沒有對照測試證明失敗率更低或動作更準確
 
 
 <!-- Case 19: Storyboard-First Cost Control (by @0xbisc) -->
+<a id="case-19"></a>
 ### Case 19: [分鏡優先的成本控管](https://x.com/0xbisc/status/2049100073481716076)（by [@0xbisc](https://x.com/0xbisc)）
 
-一種以製作思維出發的方法：先在 GPT Image 2 上不斷修改分鏡（成本低），等構圖完全鎖定後才生成影片（成本高）。這能省下大量點數，因為影片重做的開銷往往是圖片的 10 至 50 倍。298 讚 / 1.3 萬觀看 / 291 收藏。
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
+
+先檢查分鏡，再決定是否生成影片，節省多少取決於圖片設定、影片設定與修改次數，不能承諾固定 10–50 倍價差或所有任務的最低成本
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/storyboard_case19/output.jpg" width="400" alt="分鏡優先工作流程輸出"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/storyboard_case19/output.jpg" width="400" alt="分鏡優先工作流程輸出"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/09e04d80-c0d1-4a8c-9b74-2efe474acfcd" width="400" controls></video></td>
 </tr></table>
 
@@ -337,24 +356,27 @@ Generate video based strictly on storyboard @ image1. Follow the storyboard exac
 ```
 
 > [!NOTE]
-> **為什麼分鏡優先能省成本：** 影片重做會快速消耗點數。改用分鏡，你可以逐鏡頭微調，並提早發現問題。影片步驟會變成單次最終渲染，而不是昂貴的反覆試錯。社群回饋一致認為，這是處理較長片段時最節省預算的工作流程。
+> 先檢查分鏡，再決定是否生成影片，節省多少取決於圖片設定、影片設定與修改次數，不能承諾固定 10–50 倍價差或所有任務的最低成本
 
 
 ## 📱 商業與產品
 
 <!-- Case 5: App MVP Demo Video (by @Shin_Engineer) -->
+<a id="case-5"></a>
 ### Case 5: [App MVP 展示影片](https://x.com/Shin_Engineer/status/2047182050323812381)（by [@Shin_Engineer](https://x.com/Shin_Engineer)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 利用 GPT Image 2 為一款尚未存在的 App 生成近似成品的 UI 截圖，再透過 Seedance 2.0 製作成產品展示影片。發布到 TikTok 或社群媒體，在正式開發前測試市場興趣。
 
 | 輸出 |
 | :----: |
-| <a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/app_case5/output0.jpg" width="400" alt="GPT Image 2 生成的 App UI 截圖 1"></a> |
+| <a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/app_case5/output0.jpg" width="400" alt="GPT Image 2 生成的 App UI 截圖 1"></a> |
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/app_case5/output1.jpg" width="220" alt="App UI 截圖 2"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/app_case5/output2.jpg" width="220" alt="App UI 截圖 3"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/app_case5/output3.jpg" width="220" alt="App UI 截圖 4"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/app_case5/output1.jpg" width="220" alt="App UI 截圖 2"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/app_case5/output2.jpg" width="220" alt="App UI 截圖 3"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/app_case5/output3.jpg" width="220" alt="App UI 截圖 4"></a></td>
 </tr></table>
 
 **步驟：**
@@ -382,17 +404,22 @@ Smooth app UI transition animation, screen tap interaction, natural interface mo
 ```
 
 > [!NOTE]
-> **使用前請先替換方括號中的占位內容。** 在影片文案中不要標示為 AI 生成——直接當作產品展示發布，再從留言觀察真實使用者回饋。
+> 對外標明這是 AI 生成的概念展示，區分設想中的介面與互動和已實作的產品功能
 
 
 <!-- Case 6: 15-Second Commercial (by @ai_mitosan) -->
+<a id="case-6"></a>
 ### Case 6: [15 秒商業廣告](https://x.com/ai_mitosan/status/2047146600422846762)（by [@ai_mitosan](https://x.com/ai_mitosan)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
+
+> 目前 2.5 單次生成 4–30 秒，較短鏡頭在剪輯時裁切；I2V 僅接受 adaptive，請預先設定圖片比例；提示詞中的 24fps 不是 API 幀率參數
 
 兩步驟流程：GPT Image 2 生成主視覺與對應分鏡，再由 Seedance 2.0 製作各段動畫。加入字幕與音樂，就能組成完整的 15 秒廣告片。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/commercial_case6/input1.jpg" width="280" alt="GPT Image 2 主視覺產品圖"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/commercial_case6/input2.jpg" width="280" alt="GPT Image 2 分鏡"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/commercial_case6/input1.jpg" width="280" alt="GPT Image 2 主視覺產品圖"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/commercial_case6/input2.jpg" width="280" alt="GPT Image 2 分鏡"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/09ae3c57-b8fb-4323-ba76-7777541fe4a3" width="280" controls></video></td>
 </tr></table>
 
@@ -424,12 +451,15 @@ Smooth app UI transition animation, screen tap interaction, natural interface mo
 
 
 <!-- Case 15: Luxury Commercial — Storyboard to Film (by @insmind_com) -->
+<a id="case-15"></a>
 ### Case 15: [奢華廣告 — 分鏡到成片](https://x.com/insmind_com/status/2049481439285223785)（by [@insmind_com](https://x.com/insmind_com)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 GPT Image 2 生成奢華香水廣告的 3×4 分鏡宮格（共 12 幀），再用 Seedance 2.0 動畫成具備品牌級電影質感的影片。結構化的流程——序場 → 儀式 → 轉化 → 收束 → 品牌結尾——能在一次生成中完成完整敘事弧。371 讚 / 8.4 萬觀看 / 255 收藏。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/luxury_case15/output.jpg" width="400" alt="奢華廣告分鏡"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/luxury_case15/output.jpg" width="400" alt="奢華廣告分鏡"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/281fef1e-f42d-442c-b06e-44d7cff221ec" width="400" controls></video></td>
 </tr></table>
 
@@ -453,16 +483,19 @@ Animate the provided 3x4 storyboard into a smooth cinematic video. Preserve exac
 ```
 
 > [!NOTE]
-> 編輯誌式的提案版面（每幀附視覺方向註記）能讓 Seedance 接收到比純宮格更強的敘事提示。這個流程可延伸到任何奢華品類——保養品、手錶、時尚——只要替換色票與商品參考即可。
+> 這是社群嘗試的網格方法，可用於表達順序意圖，但倉庫沒有對照測試證明失敗率更低或動作更準確
 
 
 <!-- Case 16: Cinematic Food Video (by @kingofdairyque) -->
+<a id="case-16"></a>
 ### Case 16: [電影感美食影片](https://x.com/kingofdairyque/status/2049812014596599834)（by [@kingofdairyque](https://x.com/kingofdairyque)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 GPT Image 2 + Seedance 2.5 製作極度寫實的美食料理影片，搭配時間戳記式的鏡頭描述。每段時間戳（0–2 秒、2–4 秒等）定義一個特定的鏡位與動作，讓 Seedance 對 15 秒序列有精準掌控。55 讚 / 1K 觀看。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/food_case16/input.jpg" width="400" alt="美食影片分鏡輸入"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/food_case16/input.jpg" width="400" alt="美食影片分鏡輸入"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/30a20e57-8384-4117-adf7-4f92faebeb33" width="400" controls></video></td>
 </tr></table>
 
@@ -489,16 +522,19 @@ soft dramatic lighting, shallow depth of field, natural textures, no text, no su
 ```
 
 > [!NOTE]
-> 時間戳提示詞技巧能為 Seedance 提供精準的分鏡時間軸。這對任何商品或流程影片都適用——開箱、手作、調酒皆可。每段建議控制在 2 秒，並同時描述鏡位與動作，效果最佳。
+> 這是社群嘗試的網格方法，可用於表達順序意圖，但倉庫沒有對照測試證明失敗率更低或動作更準確
 
 
 <!-- Case 26: Product Image → Short Video Ad (by @insmind_com) -->
+<a id="case-26"></a>
 ### Case 26: [商品圖 → 短影音廣告](https://x.com/insmind_com/status/2049843814337306974)（by [@insmind_com](https://x.com/insmind_com)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 把靜態商品圖轉成讓觀眾停下來的社群短影音。將你既有的商品照作為參考圖傳給 GPT Image 2，生成情境構圖，再交給 Seedance 2.0 動畫化。專為電商與社群行銷設計——直接從手邊的商品照產出 TikTok / Reels 可用內容。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/product_case26/output.jpg" width="400" alt="商品影片廣告輸出"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/product_case26/output.jpg" width="400" alt="商品影片廣告輸出"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/880c0019-e45a-4eb9-be6f-638ff71a0e0f" width="400" controls></video></td>
 </tr></table>
 
@@ -516,18 +552,21 @@ soft dramatic lighting, shallow depth of field, natural textures, no text, no su
 ## 🎨 動畫與角色
 
 <!-- Case 3: Character Sheet → Animation (by @YaReYaRu30Life) -->
+<a id="case-3"></a>
 ### Case 3: [角色三視圖 → 動畫](https://x.com/YaReYaRu30Life/status/2047203375314571501)（by [@YaReYaRu30Life](https://x.com/YaReYaRu30Life)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 GPT Image 2 生成角色三視圖（正面、側面、背面），再以此作為 Seedance 2.0 動畫的視覺錨點。非常適合動漫角色、遊戲角色與公仔展示。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case3/input0.jpg" width="260" alt="角色三視圖正面"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case3/input1.jpg" width="260" alt="角色三視圖側面"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case3/input2.jpg" width="260" alt="裝備設定圖"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case3/input0.jpg" width="260" alt="角色三視圖正面"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case3/input1.jpg" width="260" alt="角色三視圖側面"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case3/input2.jpg" width="260" alt="裝備設定圖"></a></td>
 </tr></table>
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case3/output.jpg" width="400" alt="角色三視圖與裝備合成"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case3/output.jpg" width="400" alt="角色三視圖與裝備合成"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/92a0aa56-441f-40db-b9c9-13410254cb3f" width="400" controls></video></td>
 </tr></table>
 
@@ -551,12 +590,15 @@ Turn the storyboard into video using Seedance2.0
 
 
 <!-- Case 4: Anime OP Style Video (by @Toshi_nyaruo_AI) -->
+<a id="case-4"></a>
 ### Case 4: [動畫 OP 風格影片](https://x.com/Toshi_nyaruo_AI/status/2047216971184546231)（by [@Toshi_nyaruo_AI](https://x.com/Toshi_nyaruo_AI)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 GPT Image 2 建立場景設定圖，再讓 Seedance 2.0 自由發揮動畫。比較受限（分鏡引導）與自由（僅靠提示詞）的輸出結果，有助於決定每個鏡頭的最佳方式。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case4/output0.jpg" width="280" alt="動畫 OP 輸出 1"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case4/output0.jpg" width="280" alt="動畫 OP 輸出 1"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/f08a2fee-89a7-4c7c-a58a-f1306f87419a" width="280" controls></video></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/09d81a41-b5c5-47f3-8c67-442b7a93b019" width="280" controls></video></td>
 </tr></table>
@@ -584,12 +626,15 @@ Japanese full-color anime, fast cuts, high frame count, 24fps. Dark fantasy anim
 
 
 <!-- Case 12: Claude Code + Character Sheet → Animation (by @old_pgmrs_will) -->
+<a id="case-12"></a>
 ### Case 12: [Claude Code × 角色設定圖 → 動畫](https://x.com/old_pgmrs_will/status/2045091769180914019)（by [@old_pgmrs_will](https://x.com/old_pgmrs_will)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 Claude Code 撰寫世界觀與角色設定，再將結構化描述傳給 GPT Image 2 生成角色主視覺，最後用 Seedance 2.0 製作動畫。對開發者友善的原創 IP 製作流程。191 讚 / 7K 觀看。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/seedance2?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/character_case12/output.jpg" width="400" alt="Claude Code + GPT Image 2 角色主視覺"></a></td>
+<td align="center"><a href="https://evolink.ai/seedance-2-5?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/character_case12/output.jpg" width="400" alt="Claude Code + GPT Image 2 角色主視覺"></a></td>
 </tr></table>
 
 **步驟：**
@@ -603,12 +648,15 @@ Japanese full-color anime, fast cuts, high frame count, 24fps. Dark fantasy anim
 
 
 <!-- Case 13: Dance Sequence Grid → Dance Video (by @Ciri_ai) -->
+<a id="case-13"></a>
 ### Case 13: [舞蹈序列宮格 → 舞蹈影片](https://x.com/Ciri_ai/status/2049034340160704643)（by [@Ciri_ai](https://x.com/Ciri_ai)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 GPT Image 2 生成一張 4×4 的舞蹈姿勢宮格，再作為動作參考送入 Seedance 2.0。模型會將宮格解讀為編舞序列，輸出一段連續的舞蹈影片。進階變體：上傳多個角色參考，實現隨節拍換裝的轉場效果。161 讚 / 9K 觀看。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/dance_case13/output.jpg" width="400" alt="舞蹈序列宮格輸出"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/dance_case13/output.jpg" width="400" alt="舞蹈序列宮格輸出"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/39376245-e7c7-4812-b770-9e81acf4eca2" width="400" controls></video></td>
 </tr></table>
 
@@ -716,20 +764,23 @@ Character from Image 1 performs the dance based on the breakdown in Image 3. Mid
 ```
 
 > [!NOTE]
-> 這個技巧適用於任何動作序列——舞蹈、武術、運動。4×4 宮格為 Seedance 提供 16 個參考幀進行插值，比較少的格數能產生更流暢的動作。
+> 這是社群嘗試的網格方法，可用於表達順序意圖，但倉庫沒有對照測試證明失敗率更低或動作更準確
 >
 > **社群變體：** [@airina_xyz](https://x.com/airina_xyz/status/2049830199236190326) 展示了以都市街舞者為主的基礎流程。[@Kashberg_0](https://x.com/Kashberg_0/status/2049697925262102689) 使用角色板 + 動作參考幀製作 K-Pop 編舞（52 讚 / 2K 觀看）。
 
 
 <!-- Case 14: Comic Page → Animated Video (by @nimentrix) -->
+<a id="case-14"></a>
 ### Case 14: [漫畫頁 → 動畫影片](https://x.com/nimentrix/status/2049560412979708334)（by [@nimentrix](https://x.com/nimentrix)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 GPT Image 2 製作多格漫畫頁——對角線排版、對話框、電影感敘事——再用 Seedance 2.0 將整頁動畫化。模型會將漫畫格解讀為敘事序列，輸出一段連續的動畫短片。330 讚 / 2.1 萬觀看 / 360 收藏。
 
 <table><tr>
-<td align="center"><strong>GPT Image 2 輸入</strong><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/comic_case14/input1.jpg" width="260" alt="角色參考 1 — 龍"></a></td>
-<td align="center"><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/comic_case14/input2.jpg" width="260" alt="角色參考 2 — 少年"></a></td>
-<td align="center"><strong>Seedance 2.0 輸入</strong><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/comic_case14/input3.jpg" width="260" alt="GPT Image 2 生成的漫畫頁"></a></td>
+<td align="center"><strong>GPT Image 2 輸入</strong><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/comic_case14/input1.jpg" width="260" alt="角色參考 1 — 龍"></a></td>
+<td align="center"><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/comic_case14/input2.jpg" width="260" alt="角色參考 2 — 少年"></a></td>
+<td align="center"><strong>Seedance 2.0 輸入</strong><br><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/comic_case14/input3.jpg" width="260" alt="GPT Image 2 生成的漫畫頁"></a></td>
 </tr></table>
 
 <table><tr>
@@ -770,9 +821,12 @@ Smooth transitions between panels, maintain character consistency, cinematic cam
 
 
 <!-- Case 25: K-Pop Choreography with Detailed Control (by @Kashberg_0) -->
+<a id="case-25"></a>
 ### Case 25: [K-Pop 編舞 — 精細控制](https://x.com/Kashberg_0/status/2049839091899088948)（by [@Kashberg_0](https://x.com/Kashberg_0)）
 
-對舞蹈動畫的最大控制力：撰寫 16 步編舞分解，附上精確的動作描述，用 GPT Image 2 生成參考宮格，再用 Seedance 2.0 動畫化。每步 2–3 秒，可產出 35–50 秒的連續舞蹈影片，具備道地的 K-pop 動作質感。
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
+
+原編舞描述的是較長成片，使用 EvoLink Seedance 2.5 時應壓縮或拆成每次不超過 30 秒的任務，再組合或延展；歷史提示詞不能作為單次生成 35–50 秒的介面範例
 
 <table><tr>
 
@@ -884,16 +938,19 @@ No camera cuts that break continuity
 ```
 
 > [!NOTE]
-> 步驟描述越具體，Seedance 對編舞的跟隨效果越好。請使用實際的舞蹈動作名稱（body roll、hair flip、chest pop），而非模糊的描述。這個技巧同樣適用於武術套路、瑜伽流動或任何連續動作。
+> 原編舞描述的是較長成片，使用 EvoLink Seedance 2.5 時應壓縮或拆成每次不超過 30 秒的任務，再組合或延展；歷史提示詞不能作為單次生成 35–50 秒的介面範例
 
 
 <!-- Case 27: Character Intro Animation (by @0xbisc) -->
+<a id="case-27"></a>
 ### Case 27: [角色登場動畫](https://x.com/0xbisc/status/2049496584283656690)（by [@0xbisc](https://x.com/0xbisc)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 製作賽博龐克 AAA 遊戲風格的角色登場動畫。取任意角色圖片，用 GPT Image 2 重新設計為遊戲角色，生成電影感登場畫面，再用 Seedance 2.0 動畫化揭幕效果。可替換任何角色——此流程不受角色限制。55 讚 / 3K 觀看。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/intro_case27/output.jpg" width="400" alt="角色登場動畫輸出"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/intro_case27/output.jpg" width="400" alt="角色登場動畫輸出"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/e52eaa0b-b2fa-4c35-b790-a92af05d0c82" width="400" controls></video></td>
 </tr></table>
 
@@ -954,13 +1011,16 @@ secondary UI fades and slides in smoothly
 ## 🎵 音樂影片與短片
 
 <!-- Case 7: Music Video with Suno (by @fukaborichannel) -->
+<a id="case-7"></a>
 ### Case 7: [結合 Suno 的音樂影片](https://x.com/fukaborichannel/status/2047206670020055317)（by [@fukaborichannel](https://x.com/fukaborichannel)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 三工具組合：GPT Image 2 負責視覺、Seedance 2.0 負責動態、Suno 負責音樂。先製作音樂以鎖定節奏與結構，再設計與節拍對齊的分鏡。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/music_case7/input.jpg" width="280" alt="GPT Image 2 為 MV 生成的分鏡"></a></td>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/music_case7/output.jpg" width="280" alt="音樂影片輸出幀"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/music_case7/input.jpg" width="280" alt="GPT Image 2 為 MV 生成的分鏡"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/music_case7/output.jpg" width="280" alt="音樂影片輸出幀"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/fd4be5c7-cd02-4a77-ae07-6b80efeff201" width="280" controls></video></td>
 </tr></table>
 
@@ -976,12 +1036,15 @@ secondary UI fades and slides in smoothly
 
 
 <!-- Case 8: Cyberpunk Style Short Film (by @ponyodong) -->
+<a id="case-8"></a>
 ### Case 8: [賽博龐克風格短片](https://x.com/ponyodong/status/2047210987263230133)（by [@ponyodong](https://x.com/ponyodong)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 GPT Image 2 建立一致的視覺風格（賽博龐克、霓虹、燈籠、女性美學），再用 Seedance 2.0 為每張圖製作動畫，產出一部介於桌布、海報與故事開場之間的風格化短片。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/cyberpunk_case8/input.jpg" width="280" alt="GPT Image 2 生成的賽博龐克插畫"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/cyberpunk_case8/input.jpg" width="280" alt="GPT Image 2 生成的賽博龐克插畫"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/db6ebb63-90dc-47c5-96c5-ab2fa53ed56d" width="280" controls></video></td>
 </tr></table>
 
@@ -994,7 +1057,10 @@ secondary UI fades and slides in smoothly
 
 
 <!-- Case 11: Japanese MV Full Toolchain (by @Tz_2022) -->
+<a id="case-11"></a>
 ### Case 11: [日系 MV — 全 AI 工具鏈](https://x.com/Tz_2022/status/2047684399404056609)（by [@Tz_2022](https://x.com/Tz_2022)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 四工具流程，製作完整的日系音樂影片：GPT Image 2 負責視覺 → Seedance 2.0 負責動態 → Suno 5.5 負責音樂 → CapCut 負責最終剪輯。742 讚 / 10.7 萬觀看。
 
@@ -1014,12 +1080,15 @@ secondary UI fades and slides in smoothly
 
 
 <!-- Case 20: Claude Shotlist → MV (by @CoffeeVectors) -->
+<a id="case-20"></a>
 ### Case 20: [Claude 鏡頭表 → 音樂影片](https://x.com/CoffeeVectors/status/2049592150581485757)（by [@CoffeeVectors](https://x.com/CoffeeVectors)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 Claude 生成詳細的鏡頭表（15 個一秒片段，各有不同鏡位與動作），用 GPT Image 2 生成一張人物肖像，再用 Seedance 2.0 逐鏡頭製作。將片段剪輯在一起並搭配你的 Suno 音樂，即可完成一支完整 MV。AI 負責創意方向——你只需執行。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/shotlist_case20/input.jpg" width="400" alt="Claude 鏡頭表音樂影片輸出"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/shotlist_case20/input.jpg" width="400" alt="Claude 鏡頭表音樂影片輸出"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/d6ba86c4-65c3-4b1d-aa3c-846667f53b5e" width="400" controls></video></td>
 </tr></table>
 
@@ -1061,12 +1130,15 @@ Style: Photorealistic dark holy fantasy, prestige-TV aesthetic. Anamorphic 35mm,
 ## 🎮 遊戲概念
 
 <!-- Case 9: Game & Interactive Content (by @AbleGPT) -->
+<a id="case-9"></a>
 ### Case 9: [遊戲與互動內容](https://x.com/op7418/status/2046854932620525750)（by [@op7418](https://x.com/op7418)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 用 GPT Image 2 生成遊戲風格的 UI 圖片（包含 HUD 元素、技能條、選項覆蓋層），再用 Seedance 2.0 動畫化，模擬互動遊戲畫面。遊戲與插畫風格在 Seedance 中受到的內容限制比寫實人物影像少。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/game_case9/input.jpg" width="400" alt="遊戲 UI 輸入圖"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/game_case9/input.jpg" width="400" alt="遊戲 UI 輸入圖"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/3d5d7525-b469-4c3b-aab9-68dc47630fdd" width="400" controls></video></td>
 </tr></table>
 
@@ -1113,12 +1185,15 @@ Generate an ARPG dialogue game screenshot inspired by [film/series name]
 
 
 <!-- Case 17: Game Interface Animation Full Pipeline (by @0xInk_) -->
+<a id="case-17"></a>
 ### Case 17: [遊戲介面動畫 — 完整流程](https://x.com/0xInk_/status/2048809000121360649)（by [@0xInk_](https://x.com/0xInk_)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 本合集中最具病毒傳播力的流程：從零開始製作完整的電玩介面動畫。先在 Midjourney 中建立 2D 角色，用 GPT Image 2 轉換為 3D 遊戲風格，設計完整遊戲 UI（HUD、載入畫面、選單），再用 Seedance 2.0 動畫化所有畫面。GPT Image 2 在此表現出色，因為它能處理 UI 細節，且允許反覆修改而不損失品質。2280 讚 / 20.8 萬觀看 / 2793 收藏。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/game_case17/output.jpg" width="400" alt="遊戲介面動畫輸出"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/game_case17/output.jpg" width="400" alt="遊戲介面動畫輸出"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/b83da8f3-3dd6-44a3-bb27-b0d59cab381a" width="400" controls></video></td>
 </tr></table>
 
@@ -1128,7 +1203,10 @@ Generate an ARPG dialogue game screenshot inspired by [film/series name]
 
 
 <!-- Case 24: GTA-Style City Game Concept (by @markgadala) -->
+<a id="case-24"></a>
 ### Case 24: [GTA 風格城市遊戲概念](https://x.com/markgadala/status/2048560337960489385)（by [@markgadala](https://x.com/markgadala)）
+
+> **EvoLink 重現路線:** `seedance-2.5-reference-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 5 分鐘內創造任何版本的 GTA。用 GPT Image 2 生成設定在任何城市（東京、拉各斯、孟買）的遊戲 UI 截圖，再用 Seedance 2.0 動畫化為遊戲實機畫面。成品看起來就像一款不存在的遊戲的真實預告片。99 讚 / 8.7K 觀看。
 
@@ -1151,23 +1229,29 @@ Generate an ARPG dialogue game screenshot inspired by [film/series name]
 ## 🛠 製作工具
 
 <!-- Case 18: Single Agent Automated Workflow (by @venturetwins) -->
+<a id="case-18"></a>
 ### Case 18: [單一 Agent 自動化工作流程](https://x.com/venturetwins/status/2048526911056613586)（by [@venturetwins](https://x.com/venturetwins)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 零操作方案：告訴單一 AI Agent（如 Glif）你想要什麼，它會在一次對話中處理整條流程——用 GPT Image 2 生成分鏡，再用 Seedance 2.0 動畫化。無需手動傳檔，無需逐步撰寫提示詞。934 讚 / 7 萬觀看。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/agent_case18/output.jpg" width="400" alt="單一 Agent 自動化工作流程輸出"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/agent_case18/output.jpg" width="400" alt="單一 Agent 自動化工作流程輸出"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/cc01849d-ee9b-47af-a7b0-d13250a001e0" width="400" controls></video></td>
 </tr></table>
 
 
 <!-- Case 21: Casting Grid Actor Audition (by @8fstudioz) -->
+<a id="case-21"></a>
 ### Case 21: [選角宮格 — 演員試鏡](https://x.com/8fstudioz/status/2049547426198151627)（by [@8fstudioz](https://x.com/8fstudioz)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 一次生成試鏡 4 位演員，節省點數。用 GPT Image 2 生成 4 格選角宮格，展示同一角色的不同演員，再在 Seedance 2.0 中用相同台詞逐一測試。在投入完整影片製作前，先找出值得花更多點數的演員。
 
 <table><tr>
-<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=picture&utm_campaign=gptimage2-x-seedance2"><img src="images/casting_case21/input.jpg" width="400" alt="選角宮格輸入"></a></td>
+<td align="center"><a href="https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=community_image"><img src="images/casting_case21/input.jpg" width="400" alt="選角宮格輸入"></a></td>
 <td align="center"><video src="https://github.com/user-attachments/assets/dcdd958f-70cd-43f6-b191-4e0715fe2472" width="400" controls></video></td>
 </tr></table>
 
@@ -1335,7 +1419,10 @@ A clean casting audition reel where four actor candidates perform the same line 
 
 
 <!-- Case 22: 3D Sculpt → AI Render → Animation (by @_DAntunes_) -->
+<a id="case-22"></a>
 ### Case 22: [3D 雕塑 → AI 渲染 → 動畫](https://x.com/_DAntunes_/status/2049142166232904078)（by [@_DAntunes_](https://x.com/_DAntunes_)）
+
+> **EvoLink 重現路線:** `seedance-2.5-image-to-video` · [API](docs/api-workflow.md#choose-a-video-route)
 
 將傳統 3D 建模與 AI 影片橋接：在 Nomad Sculpt（或任何雕塑軟體）中建立粗略的 3D 黏土模型，用 GPT Image 2 渲染為精緻的插畫，再透過 ComfyUI 用 Seedance 2.0 動畫化。這能讓你精確控制姿勢與構圖，是純文字提示詞無法達到的。
 
@@ -2135,105 +2222,23 @@ A clean casting audition reel where four actor candidates perform the same line 
 <td align="center" valign="top" width="25%"></td>
 </tr></table>
 
-## 💡 技巧與方法
+<a id="parameters"></a>
+## 參數與實際檢查
 
-### 一致性指南
+Seedance 2.5 I2V 接受 1–2 張 `image_urls`，作為首幀或首尾幀，比例僅接受 `aspect_ratio: "adaptive"`，請預先準備目標比例圖片；單次生成 4–30 秒，較短鏡頭在剪輯時裁切，超過 30 秒的成片拆段組合或延展；目前 API 輸出為 480p／720p／1080p，其他產品的 4K 宣傳不能視為 EvoLink API 支援；提示詞寫 24fps 不等於設定幀率參數；逐項檢查產品細節、身份、動作與聲音，網格、提示詞長度或限制皆不保證一致性；依真實任務帳單比較成本，不預設固定倍數
 
-在 GPT Image 2 輸出之間以及 Seedance 2.0 動畫過程中維持視覺一致性，是最常見的挑戰。以下方法分別針對各個層面。
+[@Iancu_ai — community prompt experiment](https://x.com/Iancu_ai/status/2047882924679168083)
 
-**商品圖一致性**
+[API / errors / recovery](docs/api-workflow.md) · [Maintenance](docs/maintenance.md)
 
-商品在 Seedance 中變形的根本原因是：其動態插值會改寫細節——Logo、紋理與表面圖案都會被修改。
+<a id="related-resources"></a>
+## 相關資源
 
-解決方案：
-- 在 Seedance 提示詞中加入 `keep the product appearance completely unchanged, camera movement only, no rotation`
-- 選擇鏡頭運動（推進、拉遠）而非主體運動——讓商品靜止，移動鏡頭
-- 將片段時長控制在 3 秒以內——越短的片段累積的變形越少
-
-**角色一致性**
-
-- 先生成角色三視圖，並以此作為後續所有分鏡幀的視覺錨點
-- 在每格分鏡提示詞中都包含簡短的角色描述（髮色、服裝、體型）
-- 避免在單一片段中切換角色視角
-
-**場景一致性**
-
-在 GPT Image 2 中生成多格分鏡時，在提示詞開頭固定場景參數：
-
-```
-Scene setting: [location], [time of day], [lighting direction], [fixed background elements].
-Maintain this scene setting unchanged across all panels.
-```
-
----
-
-### 提示詞範本
-
-**GPT Image 2 → 分鏡範本**
-
-```
-Create a [N]-panel storyboard for [subject]:
-- Style: [realistic / anime / illustration / cinematic]
-- Aspect ratio: 16:9 widescreen
-- Each panel: include shot type (wide / medium / close-up) + action description
-- Character: [fixed appearance description]
-- Scene tone: [color palette / lighting / mood]
-Output as a single image with [N] panels separated by thin lines.
-```
-
-**GPT Image 2 → 3×3 宮格範本**
-
-```
-Output a single 3×3 grid storyboard image showing the following continuous action:
-[describe the action sequence]
-Requirements:
-- 9 panels arranged left-to-right, top-to-bottom showing continuous motion
-- Character position and scale consistent across all panels
-- Background consistent throughout
-- No text, labels, or content outside the panel borders
-```
-
-**Seedance 2.0 → 動畫風格範本**
-
-```
-Japanese full-color animation, high-speed editing, high frame count, 24fps.
-[Scene description]. [Character description]. [Action description].
-Strong camera work, high visual impact.
-```
-
-**Seedance 2.0 → 商業風格範本**
-
-```
-Cinematic commercial quality, [brand tone: premium / energetic / warm],
-[product] centered in frame, slow camera push-in,
-[lighting direction] highlights the product, clean background, no people.
-Duration: 3 seconds.
-```
-
-**提示詞長度——越短往往越好**
-
-社群實驗（via [@Iancu_ai](https://x.com/Iancu_ai/status/2047882924679168083)）：一段 1500 字的電影級 Seedance 提示詞輸給了一句話。同一角色、同樣 15 秒。短提示詞勝出。Seedance 獎勵的是方向性的清晰度，而非鉅細靡遺的描述——寫出動作意圖，而非場景的每個細節。
-
-## 🚀 在 Evolink 試用
-
-Evolink 讓你在同一個平台上同時使用 GPT Image 2 與 Seedance 2.0——無需切換平台，無需重新上傳檔案。
-
-**為什麼選擇 Evolink**
-
-- 單一 API 金鑰即可使用 GPT Image 2 與 Seedance 2.0
-- 同一介面中直接將圖片轉影片——生成圖片後點擊「傳送至影片」即可，無需下載
-- 批次處理——可將多張分鏡排入佇列，依序生成影片
-
-**使用方式**
-
-```
-Step 1: Open Evolink → select GPT Image 2 → generate your storyboard image
-Step 2: Click "Generate Video" → Seedance 2.0 receives the image automatically
-Step 3: Add your Seedance prompt → generate
-```
-
-<a href='https://evolink.ai/signup?utm_source=github&utm_medium=readme&utm_campaign=gptimage2-x-seedance2'><img src='https://img.shields.io/badge/🚀 Get%20Started-Evolink-black' height="25"></a>
-
+- [GPT Image 2 prompts](https://evolink.ai/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=image_prompts)
+- [Seedance 2.5 prompts](https://github.com/EvoLinkAI/awesome-seedance-2.5-prompts)
+- [Seedance 2.5 guide](https://github.com/EvoLinkAI/awesome-seedance-2.5-guide)
+- [GPT Image 2 Skill](https://github.com/EvoLinkAI/gpt-image-2-gen-skill) — GPT Image 2
+- [Legacy Seedance Skill](https://github.com/EvoLinkAI/seedance2-video-gen-skill-for-openclaw) — **Seedance 2.0**, `npx evolink-seedance`; [Seedance 2.5 → MCP / CLI](https://evolink.ai/mcp?utm_source=github&utm_medium=readme&utm_campaign=GPT-Image-2-Seedance-2.5-Workflow&utm_content=current_video_route)
 
 ## 🙏 致謝
 

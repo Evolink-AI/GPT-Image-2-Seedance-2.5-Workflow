@@ -51,3 +51,8 @@ images/showcase/129.ffpass-0.log
 .gitignore
 
 .skills/
+
+# Local tutorial outputs and Python validation caches
+workflow-output/
+__pycache__/
+*.py[cod]

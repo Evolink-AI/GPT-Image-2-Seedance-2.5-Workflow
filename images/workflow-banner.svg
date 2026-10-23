@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">GPT Image 2 to Seedance 2.5 workflow</title>
+  <desc id="desc">Confirm the image, then create the video through EvoLink. Agent and API workflow guide.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#071923"/><stop offset="1" stop-color="#122e3c"/></linearGradient>
+    <linearGradient id="accent"><stop stop-color="#46d9ef"/><stop offset="1" stop-color="#a4efe5"/></linearGradient>
+  </defs>
+  <rect width="1200" height="420" rx="20" fill="url(#bg)"/>
+  <path d="M0 365H1200M960 0V420" stroke="#22434f" stroke-width="1"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="65" fill="#83dee5" font-size="17" font-weight="700" letter-spacing="3">EVOLINK · WORKFLOW GUIDE</text>
+    <text x="64" y="151" fill="#f4fbff" font-size="52" font-weight="700">GPT Image 2</text>
+    <path d="M430 134H510m-15-12 15 12-15 12" fill="none" stroke="url(#accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="548" y="151" fill="#f4fbff" font-size="52" font-weight="700">Seedance 2.5</text>
+    <text x="64" y="208" fill="#bdd0dc" font-size="25">Confirm the image. Then create the video.</text>
+    <rect x="64" y="257" width="290" height="52" rx="10" fill="#193b48" stroke="#326575"/>
+    <text x="86" y="290" fill="#e8faff" font-size="19">Product photo → Scene</text>
+    <path d="M373 283H414m-10-9 10 9-10 9" fill="none" stroke="#74dbe2" stroke-width="2"/>
+    <rect x="434" y="257" width="204" height="52" rx="10" fill="#193b48" stroke="#326575"/>
+    <text x="457" y="290" fill="#e8faff" font-size="19">Review &amp; approve</text>
+    <path d="M657 283H698m-10-9 10 9-10 9" fill="none" stroke="#74dbe2" stroke-width="2"/>
+    <rect x="718" y="257" width="206" height="52" rx="10" fill="#193b48" stroke="#326575"/>
+    <text x="742" y="290" fill="#e8faff" font-size="19">Animate → Save</text>
+    <text x="64" y="399" fill="#8daeba" font-size="16">AGENT + API · PRODUCT ADS · CHARACTERS · STORYBOARDS</text>
+    <text x="1025" y="399" fill="#84e3e9" font-size="19" font-weight="700">EvoLink.ai</text>
+  </g>
+</svg>
